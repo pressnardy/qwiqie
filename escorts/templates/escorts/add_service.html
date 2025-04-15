@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escort Profile</title>
+    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+</head>
+<body>
+    <section class="profile-section">
+        <div class="services">
+            <h1>Add Service</h1>
+        </div>
+        <div id=services-wrapper>
+            <form action="" id="services-form" method="post">
+                <div class="service-item">
+                    {{ form.service_name }}
+                    {{ form.price }}
+                </div>
+                <div>
+                    <button type="submit" class="big-green-button" id="save-service">Save</button>
+                </div>
+            </form>
+        </div>      
+    </section>
+    <br>
+    <br>
+</body>
+</html>

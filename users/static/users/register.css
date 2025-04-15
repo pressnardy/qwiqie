@@ -1,0 +1,129 @@
+:root {
+    --dark-red: #5e0307;
+    --light-red: #f5252f;
+    --background-green: #279e03;
+    --purple: #bf047e;
+    --light-purple: #f799d6;
+    --pink-background: #fae6f3;
+    --purple-gray: #5e4455;
+    --white: white;
+    --black: black;
+    --background-light: #f4f4f4;
+  
+  }
+
+
+  body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+  }
+
+  .section-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      width: 100%; /* Adjust as needed */
+      /* max-width: 1400px; */
+  }
+
+  .section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      width: 30%; /* Adjust as needed */
+      min-width: fit-content; /* Adjust as needed */
+      max-width: 350px; 
+  }
+
+  .section h2 {
+      background-color: #e91e63; /* Pink color */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      white-space: nowrap;
+  }
+
+  .section ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+  }
+
+  .section li {
+      text-align: left;
+      padding: 5px 0;
+      white-space: nowrap;
+  }
+
+  .section .price {
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+
+  .register-button {
+      background-color: #4caf50; /* Green color */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  .register-button:hover {
+      background-color: #45a049;
+  }
+
+
+  /* registration section  */
+
+  .registration-section {
+      background-color: var(--white);
+      padding: 20px 20px 40px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .form-wrapper {
+    width: 80%;
+  }
+  .registration-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 80%;
+  }
+
+  .form-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-size: 16px;
+  }
+
+.svg-checkmark-green {
+    margin-top: 8px;
+}

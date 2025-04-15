@@ -1,0 +1,53 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from escorts.forms import CreateEscortForm
+from escorts.models import Escort
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def account(request):
+    
+    escorts = Escort.objects.filter(created_by=request.user)
+    return render(request, 'users/account.html', {"escorts": escorts})
+
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  
+            return redirect('users:account')  
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'users/register.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = CustomAuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('users:account')
+            else:
+                message = ('Invalid username or password.')
+                form = CustomAuthenticationForm()
+                return render(request, 'users/login.html', {'form': form, "message": message})  
+   
+    form = CustomAuthenticationForm()
+    return render(request, 'users/login.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('escorts:index')
+
+
+

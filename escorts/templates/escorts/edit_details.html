@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=   , initial-scale=1.0">
+    <title>Edit Escort</title>
+    {% block stylesheet%}
+    <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
+    <link rel="stylesheet" href="{% static 'users/account.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <section id="view-escort" class="manage-escorts">
+        <div id="escorts-details">
+            <form action="{% url 'escorts:create_escort' %}" method="POST" class="escort-summary flex-column">
+                {% csrf_token %}
+                <h3>Create Escort Profile</h3>
+                <div class="flex-column escort-wrapper">
+                    <div class="details-wrapper flex-column" >  
+                        <label for="escort-name">Name:</label>
+                        {{ form.name}}
+                        <label for="escort-name">Gender:</label>
+                        {{ form.gender}}
+                        <label for="age">Age:</label>
+                        {{ form.age}}
+                        <label for="phone">Phone:</label>
+                        {{ form.phone_number}}
+                        <label for="location">Location:</label>
+                        {{ form.location }}
+                        <label for="class">Class:</label>
+                        {{ form.escort_class }}
+                        <label for="skin-color">Skin Color:</label>
+                        {{ form.skin_color }}
+                        <label for="body-type">Body Type:</label>
+                        {{ form.body_type }}
+                    </div>
+                </div>
+                <div class="buttons-wrapper">
+                    <button type="submit" class="medium-green-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

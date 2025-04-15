@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Options</title>
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'users/register.css' %}">
+    {% endblock %}
+</head>
+<body>        
+    <section id="escort-registration" class="registration-section">
+        <div id="escort-title" class="bg-black color-white">
+            <h2>Create Account</h2> 
+        </div>
+        <div id="escort-form" class="form-wrapper">
+            <form action="#" method="post" class="registration-form">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                {{ form.username }}
+                <label for="phone">Phone Number:</label>
+                {{ form.phone_number }}
+                <label for="password">Password:</label>
+                {{form.password1}}
+                <label for="password">Confirm Password:</label>
+                {{form.password2}}
+                <button type="submit" href="#" class="register-button">Register</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

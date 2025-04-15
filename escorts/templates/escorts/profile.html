@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escort Profile</title>
+    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+</head>
+<body>
+    <section id="escort-profile" class="profile-section">
+        <div class="profile-heading">
+            <div class="escort-name">
+                <h1> {{ escort.name}} </h1>
+            </div>          
+        </div>
+        <div>
+            <a href="" id="pay-button" class="big-green-button">Make Payment</a>
+        </div>
+    </section>
+    <section class="profile-section">
+        <div id="personal-details">
+            <div id="age" class="personal-detail">Age: <span>{{ escort.age }}</span></div>
+            <div id="gender" class="personal-detail">Sex: <span>{{ escort.gender }}</span></div>
+            <div id="location" class="personal-detail">Location: <span>{{ escort.location }}</span></div>
+            <div id="phone" class="personal-detail">Phone: <span><a href="tel:+254712345678">{{ escort.phone_number }}</a></span></div>
+            <div id="status" class="personal-detail">Body Type: <span>{{ escort.body_type }}</span></div>
+            <div id="status" class="personal-detail">Skin Color: <span>{{ escort.skin_color }}</span></div>
+        </div>
+        <br>
+        <div> 
+            <a class="edit-escort" href="{% url 'escorts:edit_details' escort.phone_number %}">Edit Details</a>
+        </div>
+    </section>
+    <section class="profile-section">
+        <h3>Pictures</h3>
+        <div id="escort-images">
+            <div class="image-wrapper">
+                <img src="assets/images/escort.jpg" alt="profile-picture" class="profile-picture" id="profile-picture">
+            </div>
+            <div class="image-wrapper">
+                <img src="assets/images/escort.jpg" alt="profile-picture" class="profile-picture" id="profile-picture">
+            </div>
+            <div class="image-wrapper">
+                <img src="assets/images/escort.jpg" alt="profile-picture" class="profile-picture" id="profile-picture">
+            </div>
+            <div class="image-wrapper">
+                <img src="assets/images/escort.jpg" alt="profile-picture" class="profile-picture" id="profile-picture">
+            </div>
+        </div>
+    </section>
+    <section id="image-upload" class="profile-section">
+        <div class="form-wrapper">
+            <form action="#" method="post" id="upload-form">
+                <label for="upload-image">Upload Image:</label>
+                <input type="file" id="upload-image" name="upload-image" accept="image/*"  placeholder="Choose Image">
+                <button type="submit" class="upload-button" id="upload-button">Upload</button>
+            </form>
+        </div>
+    </section>
+    <section class="profile-section">
+        <div class="services">
+            <h1>Services</h1>
+        </div>
+        <div id=services-wrapper>
+            <div action="" id="services-form" method="post">
+                {% for service in servi%}
+                    <div class="service-item">
+                        <div class="service">{{ service.service_name }}</div>
+                        <div class="price">{{ service.price}}</div>
+                    </div>
+                    <div>
+                        <a href="{% url 'escorts:remove_service' phone_number=escort.phone_number service_id=service.id %}" class="medium-red-button">
+                            Remove Service
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div> 
+        <div>
+            <a class="big-green-button" href="{% url 'escorts:add_service' phone_number=escort.phone_number %}" >Add Service</a>
+        </div>     
+    </section>
+    <section>
+        <div>
+            <form action="">
+                <button type="submit" class="medium-red-button">DELETE PROFILE</button>
+            </form>
+        </div>
+
+    </section>
+    <br>
+    <br>
+</body>
+</html>
