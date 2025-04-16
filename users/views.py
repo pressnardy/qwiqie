@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def account(request):
-    
     escorts = Escort.objects.filter(created_by=request.user)
     return render(request, 'users/account.html', {"escorts": escorts})
 

@@ -35,7 +35,9 @@ def profile(request, phone_number):
     if not escort:
         return redirect('users:account')
     services = escort.services.all()
-    images = escort.images.all()   
+    images = escort.images.all()
+    for image in images:
+        print(image.image_field.url) 
     context = {'escort': escort, 'services': services, 'images': images}
     return render(request, "escorts/profile.html", context)
 
@@ -84,9 +86,9 @@ def add_service(request, phone_number):
         form = ServiceForm(request.POST or None)
         form.instance.escort_id = escort
         form.instance.created_by = request.user
-        if form.is_valid:
+        if form.is_valid():
             form.save()
-            return redirect('escorts:escort_profile', phone_number=phone_number)
+            return redirect('escorts:profile', phone_number=phone_number)
     form = ServiceForm()
     return render(request, 'escorts/add_service.html', {'escort': escort, "form": form})
 
@@ -99,18 +101,27 @@ def remove_service(request, phone_number, service_id):
 
 def add_image(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
-    form = ImageForm(request.POST or None, request.FILES or None)
-    form.instance.escort_id = escort
-    form.instance.created_by = request.user
-    if form.is_valid():
-        form.save()
-        return redirect('escorts:profile', phone_number=phone_number)
-    return render(request, 'users/edit_images.html', {'escort': escort, "form": form})
+    if not escort:
+        return HttpResponse("Escort not found or you are not authorized to add images.")
+
+    if request.method == "POST":
+        
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("valid")
+            image = form.save(commit=False)
+            image.escort_id = escort
+            image.created_by = request.user
+            image.save()
+            return redirect('escorts:profile', phone_number=phone_number)
+
+    form = ImageForm()
+    return render(request, 'escorts/add_image.html', {'escort': escort, "form": form})
 
 
 def remove_image(request, phone_number, image_id):
     image = Image.objects.filter(image_id=image_id, created_by=request.user).first()
-    if not image and request.method == 'POST':
+    if image and request.method == 'POST':
         image.delete()
     return redirect('escorts:profile', phone_number)
 

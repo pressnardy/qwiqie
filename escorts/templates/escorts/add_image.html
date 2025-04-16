@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escort Profile</title>
+    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+</head>
+<body>
+    <section id="image-upload" class="profile-section">
+        <div class="form-wrapper">
+            <form action="" method="POST" id="upload-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Upload Picture</h3>
+                 {{ form.image_field }}
+                <button type="submit" class="upload-button" id="upload-button">Upload</button>
+            </form>
+        </div>
+    </section>
+    <br>
+    <br>
+</body>
+</html>

@@ -14,6 +14,7 @@
         </div>
         <div id=services-wrapper>
             <form action="" id="services-form" method="post">
+                {% csrf_token %}
                 <div class="service-item">
                     {{ form.service_name }}
                     {{ form.price }}

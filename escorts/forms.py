@@ -33,8 +33,10 @@ class CreateEscortForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ['escort_id', 'image']
-
+        fields = ['image_field']
+        widgets = {
+            "image_field": forms.ClearableFileInput(attrs={"id": "upload-image", "type": "file"})
+        }
 
 class ServiceForm(forms.ModelForm):
     class Meta:

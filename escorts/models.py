@@ -20,10 +20,9 @@ class Escort(models.Model):
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True)
     escort_id = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='media/images/')
+    image_field = models.FileField(upload_to='images/', null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
-    def __str__(self):
-        return f"Image for {self.escort.escort_id}"
+    
     
 
 class Service(models.Model):
