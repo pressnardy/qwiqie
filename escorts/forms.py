@@ -1,5 +1,5 @@
 from django import forms
-from .models import Escort, Image, Service
+from .models import Escort, Image, Service, ProfilePicture
 
 class CreateEscortForm(forms.ModelForm):
     SKIN_COLORS = [
@@ -73,12 +73,11 @@ class RemoveImageForm(forms.ModelForm):
         fields = "__all__"
 
 
-def generate_attributes(fields: list):
-    attributes = {}
-    for field in fields:
-        field_id = field.replace('_', '-') if '_' in field else field
-        attributes[field] = {
-            'class': 'form-input',
-            'id': field_id
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = ProfilePicture
+        fields = "__all__"
+        widgets = {
+            "image_field": forms.ClearableFileInput(attrs={"id": "upload-image", "type": "file"})
         }
-    return attributes
+        

@@ -1,0 +1,94 @@
+{% extends "escorts/layout.html" %}
+
+{% block ads%}
+    <section id="ads-wrapper">
+        <div id="locations">
+            <div id="location-title" class="bg-black color-white">
+                <h1>Select Location</h1> 
+            </div>
+            <div id="Nairobi" class="county">
+                <div class="county-name">
+                    Nairobi
+                    <img src="assets/svg/caret-down-solid.svg" alt="caret-down-solid" class="caret">
+                </div>
+                <ul class="towns">
+                    <li class="town">Nairobi Central</li>
+                    <li class="town">Westlands</li>
+                    <li class="town">Karen</li>
+                    <li class="town">Lang'ata</li>
+                    <li class="town">Kilimani</li>
+                </ul>
+            </div>
+            <div id="Mombasa" class="county">Mombasa</div>
+            <div id="Kisumu" class="county">Kisumu</div>
+            <div id="Nakuru" class="county">Nakuru</div>
+            <div id="Eldoret" class="county">Eldoret</div>
+            <div id="Thika" class="county">Thika</div>
+            <div id="Nyeri" class="county">Nyeri</div>
+            <div id="Meru" class="county">Meru</div>
+            <div id="Kakamega" class="county">Kakamega</div>
+            <div id="Machakos" class="county">Machakos</div>
+            <div id="Embu" class="county">Embu</div>
+            <div id="Nanyuki" class="county">Nanyuki</div>
+            <div id="Narok" class="county">Narok</div>
+            <div id="Kajiado" class="county">Kajiado</div>
+            <div id="Bomet" class="county">Bomet</div>
+            <div id="Bungoma" class="county">Bungoma</div>
+            <div id="Busia" class="county">Busia</div>
+            <div id="Kericho" class="county">Kericho</div>
+            <div id="Kilifi" class="county">Kilifi</div>
+            <div id="Lamu" class="county">Lamu</div>
+            <div id="Kwale" class="county">Kwale</div>
+            <div id="Taita-Taveta" class="county">Taita Taveta</div>
+            <div id="Tana-River" class="county">Tana River</div>
+            <div id="Garissa" class="county">Garissa</div>
+            <div id="Wajir" class="county">Wajir</div>
+            <div id="Mandera" class="county">Mandera</div>
+            <div id="Marsabit" class="county">Marsabit</div>
+            <div id="Isiolo" class="county">Isiolo</div>
+            <div id="Samburu" class="county">Samburu</div>
+            <div id="Laikipia" class="county">Laikipia</div>
+            <div id="Nyandarua" class="county">Nyandarua</div>
+            <div id="Kirinyaga" class="county">Kirinyaga</div>
+            <div id="Murang'a" class="county">Murang'a</div>
+            <div id="Nyamira" class="county">Nyamira</div>
+            <div id="Migori" class="county">Migori</div>
+            <div id="Homa-Bay" class="county">Homa Bay</div>
+            <div id="Siaya" class="county">Siaya</div>
+            <div id="Kisii" class="county">Kisii</div>
+        </div>
+        <div id="ads">
+            <div class="ads">
+                <h2>VIP</h2>
+                <div class="ads-grid" id="vip-ads">
+                    {% for escort in vips %}
+                    <div class="card">
+                        <div class="image-wrapper">
+                          <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
+                          <div class="transparent-details">
+                            <div class="escort-name">{{ escort.name }}</div>
+                            <div class="escort-location">{{ escort.location }}</div>
+                          </div>
+                        </div>
+                        <div class="escort-phone">
+                          <span class="phone-icon"></span>
+                          <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
+                        </div> 
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="ads">
+                <h2>VERIFIED</h2>
+                <div class="ads-grid"  id="verified-ads">                  
+                </div>
+            </div>
+            <div class="ads">
+                <h2>GENERAL</h2>
+                <div class="ads-grid"  id="general-ads">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

@@ -16,6 +16,11 @@ class Escort(models.Model):
     def __str__(self):
         return f"{self.name}, {self.gender}, {self.location}, {self.age}, {self.phone_number}, {self.body_type}, {self.skin_color}"
 
+class ProfilePicture(models.Model):
+    image_id = models.AutoField(primary_key=True)
+    escort_id = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='profile_picture')
+    image_field = models.FileField(upload_to='profile_pics/', null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
 
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True)

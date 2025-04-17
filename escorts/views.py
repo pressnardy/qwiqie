@@ -4,14 +4,20 @@ from django.contrib.auth.decorators import login_required
 from .forms import ServiceForm, ImageForm, CreateEscortForm, EditEscortDetails
 from django.contrib import messages
 from .models import Escort, Image, Service
+from .util import get_cards
 
 
 def index(request):
-    escorts = Escort.objects.all()
+    vips = Escort.objects.filter(escort_class="vip")
+    verified_escorts = Escort.objects.filter(escort_class="verified")
+    general_escorts = Escort.objects.filter(escort_class="general")
+    
     context = {
-        'escorts': escorts,
+        'vips': get_cards(vips), 
+        "verified_escorts": get_cards(verified_escorts), 
+        "general_escorts": get_cards(general_escorts),
     }
-    return render(request, "escorts/index.html", context)
+    return render(request, "escorts/escorts.html", context)
 
 
 def view_escort(request, phone_number):
@@ -25,6 +31,7 @@ def view_escort(request, phone_number):
     return render(request, 'escorts/escort.html', context)
 
 
+@login_required
 def profile(request, phone_number):
     """
     the editable version of the ecort profile for the escort and their account managers
@@ -41,7 +48,7 @@ def profile(request, phone_number):
     context = {'escort': escort, 'services': services, 'images': images}
     return render(request, "escorts/profile.html", context)
 
-
+@login_required
 def create_escort(request):
     if request.method == "POST":
         form = CreateEscortForm(request.POST or None)
@@ -53,17 +60,15 @@ def create_escort(request):
     form = CreateEscortForm()
     return render(request, 'escorts/create_escort.html', {'form': form})
 
-
+@login_required
 def delete_escort(request, phone_number):
-    escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).delete()
-    if not escort:
-        return redirect('users:account')
-    if request.method == 'POST':    
+    escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
+    if escort and request.method == "POST":    
         escort.delete()
         messages.success(request, 'Escort deleted successfully!')
     return redirect('users:account')
 
-
+@login_required
 def edit_escort_details(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
     if request.method == 'POST':
@@ -77,7 +82,7 @@ def edit_escort_details(request, phone_number):
     context = {'form': form, 'escort': escort}
     return render(request, 'escorts/create_escort.html', context)
 
-
+@login_required
 def add_service(request, phone_number):    
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
     if not escort:
@@ -93,12 +98,15 @@ def add_service(request, phone_number):
     return render(request, 'escorts/add_service.html', {'escort': escort, "form": form})
 
 
+@login_required
 def remove_service(request, phone_number, service_id):
     service = Service.objects.filter(service_id=service_id, created_by=request.user).first()
-    if not service and request.method == 'POST':
+    if service:
         service.delete()
     return redirect('escorts:profile', phone_number=phone_number)
 
+
+@login_required
 def add_image(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
     if not escort:
@@ -108,7 +116,6 @@ def add_image(request, phone_number):
         
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            print("valid")
             image = form.save(commit=False)
             image.escort_id = escort
             image.created_by = request.user
@@ -119,9 +126,13 @@ def add_image(request, phone_number):
     return render(request, 'escorts/add_image.html', {'escort': escort, "form": form})
 
 
+@login_required
 def remove_image(request, phone_number, image_id):
     image = Image.objects.filter(image_id=image_id, created_by=request.user).first()
-    if image and request.method == 'POST':
+    if image:
+        # Delete the image file from the directory
+        if image.image_field:
+            image.image_field.delete(save=False)
         image.delete()
     return redirect('escorts:profile', phone_number)
 
