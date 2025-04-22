@@ -5,6 +5,7 @@ app_name = 'escorts'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('view/<str:phone_number>', views.view_escort, name="view_escort"),
     path('create/', views.create_escort, name='create_escort'),
     path('<str:phone_number>/delete/', views.delete_escort, name='delete_escort'),
     path('<str:phone_number>/profile/', views.profile, name='profile'),

@@ -7,11 +7,12 @@ from .models import Escort, Image, Service
 from .util import get_cards
 
 
+
 def index(request):
-    vips = Escort.objects.filter(escort_class="vip")
+    vips = Escort.objects.filter(escort_class="VIP").order_by('?')[:5]
     verified_escorts = Escort.objects.filter(escort_class="verified")
     general_escorts = Escort.objects.filter(escort_class="general")
-    
+    print(vips)
     context = {
         'vips': get_cards(vips), 
         "verified_escorts": get_cards(verified_escorts), 
@@ -25,9 +26,9 @@ def view_escort(request, phone_number):
     view only version of ecort profile targeting escort clients
     """
     escort = get_object_or_404(Escort, phone_number=phone_number)
-    servises = escort.services.all()
+    services = escort.services.all()
     images = escort.images.all()
-    context = {'escort': escort, 'servises': servises, 'images': images}    
+    context = {'escort': escort, 'services': services, 'images': images}    
     return render(request, 'escorts/escort.html', context)
 
 
@@ -80,7 +81,8 @@ def edit_escort_details(request, phone_number):
     else:
         form = CreateEscortForm(instance=escort)
     context = {'form': form, 'escort': escort}
-    return render(request, 'escorts/create_escort.html', context)
+    return render(request, 'escorts/edit_details.html', context)
+
 
 @login_required
 def add_service(request, phone_number):    

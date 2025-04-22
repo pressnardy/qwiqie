@@ -1,94 +1,122 @@
 {% extends "escorts/layout.html" %}
 
-{% block ads%}
-    <section id="ads-wrapper">
-        <div id="locations">
-            <div id="location-title" class="bg-black color-white">
-                <h1>Select Location</h1> 
-            </div>
-            <div id="Nairobi" class="county">
-                <div class="county-name">
-                    Nairobi
-                    <img src="assets/svg/caret-down-solid.svg" alt="caret-down-solid" class="caret">
-                </div>
-                <ul class="towns">
-                    <li class="town">Nairobi Central</li>
-                    <li class="town">Westlands</li>
-                    <li class="town">Karen</li>
-                    <li class="town">Lang'ata</li>
-                    <li class="town">Kilimani</li>
-                </ul>
-            </div>
-            <div id="Mombasa" class="county">Mombasa</div>
-            <div id="Kisumu" class="county">Kisumu</div>
-            <div id="Nakuru" class="county">Nakuru</div>
-            <div id="Eldoret" class="county">Eldoret</div>
-            <div id="Thika" class="county">Thika</div>
-            <div id="Nyeri" class="county">Nyeri</div>
-            <div id="Meru" class="county">Meru</div>
-            <div id="Kakamega" class="county">Kakamega</div>
-            <div id="Machakos" class="county">Machakos</div>
-            <div id="Embu" class="county">Embu</div>
-            <div id="Nanyuki" class="county">Nanyuki</div>
-            <div id="Narok" class="county">Narok</div>
-            <div id="Kajiado" class="county">Kajiado</div>
-            <div id="Bomet" class="county">Bomet</div>
-            <div id="Bungoma" class="county">Bungoma</div>
-            <div id="Busia" class="county">Busia</div>
-            <div id="Kericho" class="county">Kericho</div>
-            <div id="Kilifi" class="county">Kilifi</div>
-            <div id="Lamu" class="county">Lamu</div>
-            <div id="Kwale" class="county">Kwale</div>
-            <div id="Taita-Taveta" class="county">Taita Taveta</div>
-            <div id="Tana-River" class="county">Tana River</div>
-            <div id="Garissa" class="county">Garissa</div>
-            <div id="Wajir" class="county">Wajir</div>
-            <div id="Mandera" class="county">Mandera</div>
-            <div id="Marsabit" class="county">Marsabit</div>
-            <div id="Isiolo" class="county">Isiolo</div>
-            <div id="Samburu" class="county">Samburu</div>
-            <div id="Laikipia" class="county">Laikipia</div>
-            <div id="Nyandarua" class="county">Nyandarua</div>
-            <div id="Kirinyaga" class="county">Kirinyaga</div>
-            <div id="Murang'a" class="county">Murang'a</div>
-            <div id="Nyamira" class="county">Nyamira</div>
-            <div id="Migori" class="county">Migori</div>
-            <div id="Homa-Bay" class="county">Homa Bay</div>
-            <div id="Siaya" class="county">Siaya</div>
-            <div id="Kisii" class="county">Kisii</div>
+{% load static %}
+{% block sections_wrapper %}
+<section id="filters" class="filters-section">
+    <div id="gender" class="filter-wrapper">
+        <div id="straight-female" class="btn-filter">Female</div>
+        <div id="straight-male" class="btn-filter">Male</div>
+    
+    </div>
+    <div id="body-type_filter" class="filter-wrapper">
+        <div id="petite" class="btn-filter">Petite</div>
+        <div id="medium" class="btn-filter">Medium</div>
+        <div id="curvy" class="btn-filter">Curvy</div>
+    </div>
+    <div id="age_filter" class="filter-wrapper">
+        <div id="18-25" class="btn-filter no-wrap">20 - 25</div>
+        <div id="26-35" class="btn-filter no-wrap">26 - 30</div>
+        <div id="36-45" class="btn-filter no-wrap">over 30</div>
+    </div>
+    <div id="complexion-filter" class="filter-wrapper">
+        <div id="dark" class="btn-filter no-wrap">Dark Skin</div>
+        <div id="chocolate" class="btn-filter">Chocolate</div>
+        <div id="light-skin" class="btn-filter no-wrap">Light Skin</div>
+    </div>
+</section>
+<section id="ads-wrapper">
+    <div id="locations">
+        <div id="location-title" class="bg-black color-white">
+            <h1>Select Location</h1> 
         </div>
-        <div id="ads">
-            <div class="ads">
-                <h2>VIP</h2>
-                <div class="ads-grid" id="vip-ads">
-                    {% for escort in vips %}
-                    <div class="card">
-                        <div class="image-wrapper">
-                          <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
-                          <div class="transparent-details">
-                            <div class="escort-name">{{ escort.name }}</div>
-                            <div class="escort-location">{{ escort.location }}</div>
-                          </div>
+        <div id="Nairobi" class="county">
+            <div class="county-name">
+                Nairobi
+                <img src="{% static 'escorts/svgs/triangle_down.svg' %}" alt="caret-down-solid" class="caret">
+            </div>
+            <ul class="towns">
+                <li class="town">Nairobi Central</li>
+                <li class="town">Westlands</li>
+                <li class="town">Karen</li>
+                <li class="town">Lang'ata</li>
+                <li class="town">Kilimani</li>
+            </ul>
+        </div>
+        <div id="Mombasa" class="county">Mombasa</div>
+        <div id="Kisumu" class="county">Kisumu</div>
+        <div id="Nakuru" class="county">Nakuru</div>
+        <div id="Eldoret" class="county">Eldoret</div>
+        <div id="Thika" class="county">Thika</div>
+        <div id="Nyeri" class="county">Nyeri</div>
+        <div id="Meru" class="county">Meru</div>
+        <div id="Kakamega" class="county">Kakamega</div>
+        <div id="Machakos" class="county">Machakos</div>
+        <div id="Embu" class="county">Embu</div>
+        <div id="Nanyuki" class="county">Nanyuki</div>
+        <div id="Narok" class="county">Narok</div>
+        <div id="Kajiado" class="county">Kajiado</div>
+        <div id="Bomet" class="county">Bomet</div>
+        <div id="Bungoma" class="county">Bungoma</div>
+        <div id="Busia" class="county">Busia</div>
+        <div id="Kericho" class="county">Kericho</div>
+        <div id="Kilifi" class="county">Kilifi</div>
+        <div id="Lamu" class="county">Lamu</div>
+        <div id="Kwale" class="county">Kwale</div>
+        <div id="Taita-Taveta" class="county">Taita Taveta</div>
+        <div id="Tana-River" class="county">Tana River</div>
+        <div id="Garissa" class="county">Garissa</div>
+        <div id="Wajir" class="county">Wajir</div>
+        <div id="Mandera" class="county">Mandera</div>
+        <div id="Marsabit" class="county">Marsabit</div>
+        <div id="Isiolo" class="county">Isiolo</div>
+        <div id="Samburu" class="county">Samburu</div>
+        <div id="Laikipia" class="county">Laikipia</div>
+        <div id="Nyandarua" class="county">Nyandarua</div>
+        <div id="Kirinyaga" class="county">Kirinyaga</div>
+        <div id="Murang'a" class="county">Murang'a</div>
+        <div id="Nyamira" class="county">Nyamira</div>
+        <div id="Migori" class="county">Migori</div>
+        <div id="Homa-Bay" class="county">Homa Bay</div>
+        <div id="Siaya" class="county">Siaya</div>
+        <div id="Kisii" class="county">Kisii</div>
+    </div>
+    <div id="ads">
+        <div class="ads">
+            <h2 class="section-title">VIP</h2>
+            <div class="ads-grid" id="vip-ads">
+                {% for escort in vips %}
+                <div class="card">
+                    <div class="image-wrapper">
+                        <a href="{% url 'escorts:view_escort' escort.phone_number %}">
+                            <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
+                        </a>
+                        <a href="{% url 'escorts:view_escort' escort.phone_number %}">
+                        <div class="transparent-details">
+                            <div class="escort-name capitalize">{{ escort.name }}</div>
+                        <div class="escort-location capitalize">{{ escort.location }}</div>
                         </div>
-                        <div class="escort-phone">
-                          <span class="phone-icon"></span>
-                          <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
-                        </div> 
+                        </a>
                     </div>
-                    {% endfor %}
+                    <div class="escort-phone">
+                        <span class="phone-icon"></span>
+                        <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
+                    </div> 
                 </div>
-            </div>
-            <div class="ads">
-                <h2>VERIFIED</h2>
-                <div class="ads-grid"  id="verified-ads">                  
-                </div>
-            </div>
-            <div class="ads">
-                <h2>GENERAL</h2>
-                <div class="ads-grid"  id="general-ads">
-                    
-                </div>
+                <!-- </a> -->
+                {% endfor %}
             </div>
         </div>
-    </section>
-    {% endblock %}
+        <div class="ads">
+            <h2>VERIFIED</h2>
+            <div class="ads-grid"  id="verified-ads">                  
+            </div>
+        </div>
+        <div class="ads">
+            <h2>GENERAL</h2>
+            <div class="ads-grid"  id="general-ads">
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

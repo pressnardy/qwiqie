@@ -1,93 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escort Profile</title>
-    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
-</head>
-<body>
-    <section id="escort-profile" class="profile-section">
-        <div class="profile-heading">
-            <div class="escort-name">
-                <h1> {{ escort.name}} </h1>
-            </div>          
-        </div>
-        <div>
-            <a href="" id="pay-button" class="big-green-button">Make Payment</a>
-        </div>
-    </section>
-    <section class="profile-section">
-        <div id="personal-details">
-            <div id="age" class="personal-detail">Age: <span>{{ escort.age }}</span></div>
-            <div id="gender" class="personal-detail">Sex: <span>{{ escort.gender }}</span></div>
-            <div id="location" class="personal-detail">Location: <span>{{ escort.location }}</span></div>
-            <div id="phone" class="personal-detail">Phone: <span><a href="tel:+254712345678">{{ escort.phone_number }}</a></span></div>
-            <div id="status" class="personal-detail">Body Type: <span>{{ escort.body_type }}</span></div>
-            <div id="status" class="personal-detail">Skin Color: <span>{{ escort.skin_color }}</span></div>
-        </div>
-        <br>
-        <div> 
-            <a class="edit-escort" href="{% url 'escorts:edit_details' escort.phone_number %}">Edit Details</a>
-        </div>
-    </section>
-    <section class="profile-section">
-        <h3>Pictures</h3>
-        <div id="escort-images">
-            {% for image in images %}
-                <div class="image-wrapper">
-                    <img src="{{ image.image_field.url }}" alt="escort-picture" class="profile-picture" id="profile-picture">
+
+{% extends 'users/account.html' %}
+
+{% load static %}
+{% block title %}<title>Escort Profile</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
+<section id="escort-profile" class="profile-section">
+    <div class="profile-heading">
+        <div class="escort-name">
+            <h1> {{ escort.name}} </h1>
+        </div>          
+    </div>
+    <div>
+        <a href="" id="pay-button" class="big-green-button">Make Payment</a>
+    </div>
+</section>
+<section class="profile-section">
+    <div id="personal-details">
+        <div id="age" class="personal-detail">Age: <span>{{ escort.age }}</span></div>
+        <div id="gender" class="personal-detail">Sex: <span>{{ escort.gender }}</span></div>
+        <div id="location" class="personal-detail">Location: <span>{{ escort.location }}</span></div>
+        <div id="phone" class="personal-detail">Phone: <span><a href="tel:+254712345678">{{ escort.phone_number }}</a></span></div>
+        <div id="body-type" class="personal-detail">Body Type: <span>{{ escort.body_type }}</span></div>
+        <div id="skin-color" class="personal-detail">Skin Color: <span>{{ escort.skin_color }}</span></div>
+    </div>
+    <br>
+    <div> 
+        <a class="edit-escort" href="{% url 'escorts:edit_details' escort.phone_number %}">Edit Details</a>
+    </div>
+</section>
+<section class="profile-section">
+    <h3>Pictures</h3>
+    <div id="escort-images">
+        {% for image in images %}
+            <div class="image-wrapper">
+                <img src="{{ image.image_field.url }}" alt="escort-picture" class="profile-picture" id="profile-picture">
+                <div>
+                    <a class="medium-red-button" href="{% url 'escorts:remove_image' phone_number=escort.phone_number image_id=image.image_id %}">
+                        X
+                    </a>
+            
+                </div>  
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        <a class="medium-green-button" href="{% url 'escorts:add_image' escort.phone_number %}">Add Image</a>
+    </div>
+</section>
+
+<section class="profile-section">
+    <div class="services">
+        <h1>Services</h1>
+    </div>
+    <div id=services-wrapper>
+        <div action="" id="services-form" method="post">
+            {% for service in services %}
+                <div class="service-item">
+                    <div class="service">{{ service.service_name }}</div>
+                    <div class="price">{{ service.price}}</div>
+                    <br>
                     <div>
-                        <a class="medium-red-button" href="{% url 'escorts:remove_image' phone_number=escort.phone_number image_id=image.image_id %}">
+                        <a href="{% url 'escorts:remove_service' phone_number=escort.phone_number service_id=service.service_id %}" class="medium-red-button">
                             X
                         </a>
-                
-                    </div>  
+                    </div>
                 </div>
             {% endfor %}
         </div>
-        <div>
-            <a class="medium-green-button" href="{% url 'escorts:add_image' escort.phone_number %}">Add Image</a>
-        </div>
-    </section>
-    
-    <section class="profile-section">
-        <div class="services">
-            <h1>Services</h1>
-        </div>
-        <div id=services-wrapper>
-            <div action="" id="services-form" method="post">
-                {% for service in services %}
-                    <div class="service-item">
-                        <div class="service">{{ service.service_name }}</div>
-                        <div class="price">{{ service.price}}</div>
-                        <br>
-                        <div>
-                            <a href="{% url 'escorts:remove_service' phone_number=escort.phone_number service_id=service.service_id %}" class="medium-red-button">
-                                X
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div> 
-        <div>
-            <a class="big-green-button" href="{% url 'escorts:add_service' phone_number=escort.phone_number %}" >Add Service</a>
-        </div>     
-    </section>
-    <section>
-        <br>
-        <br>
-        <div>
-            <form action="{% url 'escorts:delete_escort' phone_number=escort.phone_number %}">
-                {% csrf_token %}
-                <button type="submit" class="medium-red-button">DELETE PROFILE</button>
-            </form>
-        </div>
+    </div> 
+    <div>
+        <a class="big-green-button" href="{% url 'escorts:add_service' phone_number=escort.phone_number %}" >Add Service</a>
+    </div>     
+</section>
+<section>
+    <br>
+    <br>
+    <div>
+        <form action="{% url 'escorts:delete_escort' phone_number=escort.phone_number %}">
+            {% csrf_token %}
+            <button type="submit" class="medium-red-button">DELETE PROFILE</button>
+        </form>
+    </div>
 
-    </section>
-    <br>
-    <br>
-</body>
-</html>
+</section>
+{% endblock %}
+

@@ -1,3 +1,5 @@
+import random
+
 def get_cards(escorts):
     cards = []
     for escort in escorts:
@@ -12,3 +14,13 @@ def get_cards(escorts):
         }
         cards.append(card)
     return cards
+
+
+def get_random_ids(model):
+    total_objects = model.objects.count()
+    random_ids = random.sample(range(1, total_objects + 1), 5)
+    random_objects = model.objects.filter(id__in=random_ids)
+
+    return random_objects
+
+

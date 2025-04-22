@@ -13,9 +13,9 @@
 <body>
     <section id="view-escort" class="manage-escorts">
         <div id="escorts-details">
-            <form action="{% url 'escorts:create_escort' %}" method="POST" class="escort-summary flex-column">
+            <form action="{% url 'escorts:edit_details' escort.phone_number %}" method="POST" class="escort-summary flex-column">
                 {% csrf_token %}
-                <h3>Create Escort Profile</h3>
+                <h3>Edit Escort Details</h3>
                 <div class="flex-column escort-wrapper">
                     <div class="details-wrapper flex-column" >  
                         <label for="escort-name">Name:</label>

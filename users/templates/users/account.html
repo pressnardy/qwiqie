@@ -4,18 +4,29 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=   , initial-scale=1.0">
-    <title>Document</title>
-    {% block stylesheet%}
+    {% block title %}<title>Document</title>{% endblock %}
     <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
     <link rel="stylesheet" href="{% static 'users/account.css' %}">
+    {% block specific_css %} 
     {% endblock %}
 </head>
 <body>
+    <nav>
+        <div id="page-title">Qwiqie.com</div>
+        <div id="description">
+            <p>Manage All Your Escort Profiles With One Account</p>
+        </div>
+        <div id="login-wrapper">
+            <div id="login"> <a href="{% url 'users:logout' %}" style="text-decoration: none;"> Logout </a></div>
+        </div>
+    </nav>
     <br>
+    <div class="sections-wrapper">
+    {% block sections_wrapper%}
     <section id="agency-profile" class="profile-section">
         <div class="profile-heading">
             <div class="escort-name">
-                <h1>User Name</h1>
+                <h1>{{ user.username }}</h1>
             </div>          
         </div>
         <br>
@@ -56,5 +67,25 @@
             <a href="{% url 'escorts:create_escort' %}" class="edit-escort">Add Escort</a>
         </div>
     </section>
+    {% endblock %}
+    </div>
+    <br>
+    <br>
+    <footer>
+        <div id="about-us">
+            <h3><span class="red-border-bottom">About us:</span></h3>
+            <p>We are a digital marketing agency. We provide digital infrastructure for escorts 
+                and escort agency to scale their business</p>
+        </div>
+        <div id="about-us">
+            <h3><span class="red-border-bottom">Contact us:</span></h3>
+            <div>
+                <p>Email: info@qwiqie.com</p>
+            </div>
+            <div>
+                <p>Phone: 0701986756</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

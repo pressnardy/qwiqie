@@ -5,12 +5,15 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from escorts.forms import CreateEscortForm
 from escorts.models import Escort
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required
 def account(request):
+    user = request.user
     escorts = Escort.objects.filter(created_by=request.user)
-    return render(request, 'users/account.html', {"escorts": escorts})
+    context = {"user": user, "escorts": escorts}
+    return render(request, 'users/account.html', context)
 
 
 def register(request):
@@ -46,6 +49,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    messages.success(request, 'You have been successfully logged out.')
     return redirect('escorts:index')
 
 

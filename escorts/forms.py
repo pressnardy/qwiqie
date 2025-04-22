@@ -28,7 +28,6 @@ class CreateEscortForm(forms.ModelForm):
             "body_type": forms.TextInput(attrs={"class": "form-input", "id": "body-type"}),
         }
 
-    
 
 class ImageForm(forms.ModelForm):
     class Meta:
@@ -80,4 +79,4 @@ class ProfilePictureForm(forms.ModelForm):
         widgets = {
             "image_field": forms.ClearableFileInput(attrs={"id": "upload-image", "type": "file"})
         }
-        
+

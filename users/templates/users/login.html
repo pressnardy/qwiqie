@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'users/register.css' %}">
-    {% endblock %}
-</head>
-<body>
-    <section id="login-section" class="registration-section">
-        <div id="escort-title" class="bg-black color-white">
-            <h2>Login</h2> 
-        </div>
-        <div class="form-wrapper">
-            <form action="#" method="post" class="registration-form">
-                {% csrf_token %}
-                <label for="email">Username:</label>
-                {{ form.username}}
 
-                <label for="password">Password:</label>
-                {{ form.password }}
-                <button type="submit" href="#" class="register-button">Login</button>
-            </form>
-        </div>
-    </section>
-</body>
-</html>
+{% extends "users/account.html" %}
+
+{% load static %}
+
+{% block title %}<title>Login</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'users/register.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
+<section id="login-section" class="registration-section">
+    <div id="escort-title" class="#">
+        <h2>Login</h2> 
+    </div>
+    <div class="form-wrapper">
+        <form action="#" method="post" class="registration-form">
+            {% csrf_token %}
+            <label for="email">Username:</label>
+            {{ form.username}}
+
+            <label for="password">Password:</label>
+            {{ form.password }}
+            <button type="submit" href="#" class="register-button">Login</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
 

@@ -37,20 +37,31 @@ body {
     background-color: var(--background-light);
 }
 
+.escort-name {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: flex-start;
+    text-transform: capitalize;
+}
+
 #personal-details {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
     width: 90%;
     height: 90%;
     padding: 20px 5px;
     
 }
 
-
+#details-list {
+    padding-top: 48px;
+}
 
 #escort-images {
     display: flex;
@@ -197,6 +208,7 @@ li {
 
 .personal-detail {
     white-space: nowrap;
+    text-transform: capitalize;
 }
 
 .service-item {
@@ -260,3 +272,8 @@ li {
     align-items: center;
     gap: 12px;
 }
+
+h1 {
+    text-transform: capitalize;
+}
+

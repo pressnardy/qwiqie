@@ -1,1 +1,66 @@
-<h1>escort</h1>
+{% extends 'escorts/layout.html' %}
+
+{% load static %}
+{% block title %}
+    <title>{{ escort.name }}</title>
+{% endblock %}
+{% block specific_css%}
+    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
+<section id="escort-profile" class="profile-section">
+    <div class="profile-heading">
+        <div class="escort-name">
+            <h1> {{ escort.name }} </h1>
+        </div>          
+    </div>
+</section>
+<section class="profile-section">
+    <div id="personal-details">
+        <div id="age" class="personal-detail">Age: <span>{{ escort.age }}</span></div>
+        <br>
+        <div id="gender" class="personal-detail">Sex: <span>{{ escort.gender }}</span></div>
+        <br>
+        <div id="location" class="personal-detail">Location: <span>{{ escort.location }}</span></div>
+        <br>
+        <div id="phone" class="personal-detail">Phone: <span><a href="tel:{{ escort.phone_number }}">{{ escort.phone_number }}</a></span></div>
+        <br>
+        <div id="status" class="personal-detail">Body Type: <span>{{ escort.body_type }}</span></div>
+        <br>
+        <div id="status" class="personal-detail">Skin Color: <span>{{ escort.skin_color }}</span></div>
+        <br>
+        
+    </div>
+</section>
+<section class="profile-section">
+    <h3>Images</h3>
+    <div id="escort-images">
+        {% for image in images %}
+            <div class="image-wrapper">
+                <img src="{{ image.image_field.url }}" alt="escort-picture" class="profile-picture" id="profile-picture">
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="profile-section">
+    <div class="services">
+        <h1>Services</h1>
+    </div>
+    <div id=services-wrapper>
+        <div action="" id="services-form" method="post">
+            {% for service in services %}
+                <div class="service-item">
+                    <div class="service">{{ service.service_name }}</div>
+                    <div class="price">{{ service.price}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>    
+</section>
+<br>
+<br>
+{% endblock %}
+
+
