@@ -22,7 +22,7 @@
     </nav>
     <br>
     <div class="sections-wrapper">
-    {% block sections_wrapper%}
+    {% block sections_wrapper %}
     <section id="agency-profile" class="profile-section">
         <div class="profile-heading">
             <div class="escort-name">
@@ -71,7 +71,8 @@
     </div>
     <br>
     <br>
-    <footer>
+    {% block footer %}
+    <!-- <footer>
         <div id="about-us">
             <h3><span class="red-border-bottom">About us:</span></h3>
             <p>We are a digital marketing agency. We provide digital infrastructure for escorts 
@@ -86,6 +87,7 @@
                 <p>Phone: 0701986756</p>
             </div>
         </div>
-    </footer>
+    </footer> -->
+    {% endblock %}
 </body>
 </html>

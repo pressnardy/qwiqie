@@ -80,3 +80,35 @@ class ProfilePictureForm(forms.ModelForm):
             "image_field": forms.ClearableFileInput(attrs={"id": "upload-image", "type": "file"})
         }
 
+
+class FilterForm(forms.Form):
+    BODY_TYPE_CHOICES = [
+        ('petite', 'Petite'),
+        ('medium', 'Medium'),
+        ('curvy', 'Curvy'),
+    ]
+
+    AGE_CHOICES = [
+        ('20-25', '20 - 25'),
+        ('26-30', '26 - 30'),
+        ('over 30', 'Over 30'),
+    ]
+
+    SKIN_COLOR_CHOICES = [
+        ('dark', 'Dark Skin'),
+        ('chocolate', 'Chocolate'),
+        ('light-skin', 'Light Skin'),
+    ]
+
+    body_type = forms.ChoiceField(
+        choices=BODY_TYPE_CHOICES, 
+        widget=forms.RadioSelect
+    )
+    age = forms.ChoiceField(
+        choices=AGE_CHOICES, 
+        widget=forms.RadioSelect
+    )
+    skin_color = forms.ChoiceField(
+        choices=SKIN_COLOR_CHOICES, 
+        widget=forms.RadioSelect
+    )

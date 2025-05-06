@@ -3,8 +3,11 @@ from . import views
 
 app_name = 'escorts'
 
+
 urlpatterns = [
     path('', views.index, name='index'),
+    path('female/filters', views.female_filters, name='female_filters'),
+    path('males', views.get_males, name='males'),
     path('view/<str:phone_number>', views.view_escort, name="view_escort"),
     path('create/', views.create_escort, name='create_escort'),
     path('<str:phone_number>/delete/', views.delete_escort, name='delete_escort'),

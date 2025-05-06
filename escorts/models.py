@@ -23,6 +23,7 @@ class ProfilePicture(models.Model):
     image_field = models.FileField(upload_to='profile_pics/', null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
 
+
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True)
     escort_id = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='images')
@@ -30,7 +31,6 @@ class Image(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
     
     
-
 class Service(models.Model):
     service_id = models.AutoField(primary_key=True)
     service_name = models.CharField(max_length=100)
@@ -41,6 +41,4 @@ class Service(models.Model):
     def __str__(self):
         return f"{self.service_name}, {self.price}"
     
-
-# Create your models here.
-  
+ 

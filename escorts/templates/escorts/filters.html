@@ -1,0 +1,35 @@
+{% extends 'escorts/index.html' %}
+
+{% load static %}
+
+{% block ads %}
+<div id="ads">
+    <div class="ads">
+        <h2>VIP</h2>
+        <div class="ads-flex" id="vip-ads">
+            {% for escort in escorts %}
+            <div class="card">
+                <div class="image-wrapper">
+                    <a href="{% url 'escorts:view_escort' escort.phone_number %}">
+                        <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
+                    </a>
+                    <a href="{% url 'escorts:view_escort' escort.phone_number %}">
+                    <div class="transparent-details">
+                        <div class="escort-name capitalize">{{ escort.name }}</div>
+                    <div class="escort-location capitalize">{{ escort.location }}</div>
+                    </div>
+                    </a>
+                </div>
+                <div class="escort-phone">
+                    <span class="phone-icon"></span>
+                    <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
+                </div> 
+            </div>
+        <!-- </a> -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -23,4 +23,25 @@ def get_random_ids(model):
 
     return random_objects
 
+def filter_escorts(filter_form, escort_model, gender):
+    try:
+        body_type = filter_form.cleaned_data['body_type']
+    except KeyError:
+        pass
+    try:
+        min_age = filter_form.cleaned_data['age'].split('-')[0].strip()
+    except KeyError:
+        pass
+    try:
+        max_age = filter_form.cleaned_data['age'].split['-'][1].strip()
+    except KeyError:
+        pass
+    try:
+        skin_color = filter_form.cleaned_data['skin_color']
+    except KeyError:
+        pass
+    escorts = escort_model.objects.filter(gender=gender, age__gte=min_age, age__lte=max_age, body_type=body_type, skin_color=skin_color)
+    return escorts
+
+    
 

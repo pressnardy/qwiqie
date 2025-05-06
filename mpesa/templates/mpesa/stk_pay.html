@@ -1,0 +1,42 @@
+
+{% extends "users/account.html" %}
+
+{% load static %}
+
+{% block title %}<title>Payment</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'users/register.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
+<section id="login-section" class="registration-section">
+    <div id="payment-title" class="payment-title">
+        <div><h2>Make Payment</h2></div> 
+        <div class="title-description">
+            <p>A STK code will be sent to your phone number below.</p>
+            <p> Enter your pin to complete the payment</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-wrapper flex-column-center">
+        <form action="#" method="post" class="registration-form flex-column-center">
+            {% csrf_token %}
+            <div class="flex-column-center width-100">
+                <label>Amount:
+                <br>
+                {{ form.amount}}
+                </label>
+                <label >Phone Number:
+                <br>
+                {{ form.escort_phone }}
+                </label>
+            <button type="submit" class="register-button">Make Payment</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+

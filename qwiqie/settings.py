@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f$y@8$$e77$-guy*c!5u*(4tdwuas5mryqru1#e5qfvpq)id#+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cosmic-midge-presumably.ngrok-free.app', '127.0.0.1',]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "escorts",
     "users",
+    "mpesa",
 ]
 
 MIDDLEWARE = [

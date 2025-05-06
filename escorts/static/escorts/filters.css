@@ -1,0 +1,80 @@
+:root {
+    --dark-red: #5e0307;
+    --light-red: #f5252f;
+    --background-green: #279e03;
+    --purple: #bf047e;
+    --light-purple: #f799d6;
+    --pink-background: #fae6f3;
+    --purple-gray: #5e4455;
+    --white: white;
+    --black: black;
+  
+}
+
+
+#filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 48px 24px 24px 24px;
+    background: var(--dark-red);
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    
+}
+
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid var(--light-purple);
+    padding: 8px 8px 8px 16px;
+    border-radius: 4px;
+}
+
+
+.btn-filter {
+    padding: 8px;
+    background-color: var(--light-purple);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.green-button {
+    background-color: #4caf50; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.green-button:hover {
+    background-color: #45a049;
+}
+
+
+.filter-title {
+    color: white;
+    background: var(--dark-red);
+    font-weight: bold;
+}

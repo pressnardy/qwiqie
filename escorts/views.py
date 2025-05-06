@@ -1,24 +1,53 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import ServiceForm, ImageForm, CreateEscortForm, EditEscortDetails
+from .forms import ServiceForm, ImageForm, CreateEscortForm, EditEscortDetails, FilterForm
 from django.contrib import messages
 from .models import Escort, Image, Service
-from .util import get_cards
-
+from .util import get_cards, filter_escorts
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
-    vips = Escort.objects.filter(escort_class="VIP").order_by('?')[:5]
-    verified_escorts = Escort.objects.filter(escort_class="verified")
-    general_escorts = Escort.objects.filter(escort_class="general")
-    print(vips)
+    vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:5]
+    verified_escorts = Escort.objects.filter(escort_class="verified", gender='female')
+    general_escorts = Escort.objects.filter(escort_class="general", gender="female")
+    filter_form = FilterForm()
     context = {
+        'filter_form': filter_form,
+        'vips': get_cards(vips), 
+        "verified_escorts": get_cards(verified_escorts), 
+        "general_escorts": get_cards(general_escorts),
+    }
+    return render(request, "escorts/index.html", context)
+
+
+@csrf_exempt
+def female_filters(request):
+    if request.method == "POST":
+        filter_form = FilterForm(request.POST)
+        print(filter_form)      
+        escorts = filter_escorts(filter_form=filter_form, escort_model=Escort, gender='female')
+        context = {
+            "escorts": escorts
+        }
+        return render(request, 'escorts/fileters.html', context)
+    return redirect('escorts:index')
+    
+
+def get_males(request):
+    vips = Escort.objects.filter(escort_class="VIP", gender="male").order_by('?')[:5]
+    verified_escorts = Escort.objects.filter(escort_class="verified", gender='male')
+    general_escorts = Escort.objects.filter(escort_class="general", gender="male")
+    form = FilterForm()
+    context = {
+        'form': form,
         'vips': get_cards(vips), 
         "verified_escorts": get_cards(verified_escorts), 
         "general_escorts": get_cards(general_escorts),
     }
     return render(request, "escorts/escorts.html", context)
+
 
 
 def view_escort(request, phone_number):
@@ -138,3 +167,12 @@ def remove_image(request, phone_number, image_id):
         image.delete()
     return redirect('escorts:profile', phone_number)
 
+
+@login_required
+def pay(request, escort_phone):
+    if request.method == 'POST':
+        form = PaymentForm()
+        if form.is_valid:
+            
+            pass   
+    return 
