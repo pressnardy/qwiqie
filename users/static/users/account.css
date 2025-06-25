@@ -235,3 +235,18 @@ nav {
     box-sizing: border-box;
     width: 100%;
 }
+
+/* utilities */
+
+.flex-center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

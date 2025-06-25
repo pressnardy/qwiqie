@@ -76,10 +76,10 @@
         <a class="big-green-button" href="{% url 'escorts:add_service' phone_number=escort.phone_number %}" >Add Service</a>
     </div>     
 </section>
-<section>
+<section class="profile-section">
     <br>
     <br>
-    <div>
+    <div class="profile-section">
         <form action="{% url 'escorts:delete_escort' phone_number=escort.phone_number %}">
             {% csrf_token %}
             <button type="submit" class="medium-red-button">DELETE PROFILE</button>
