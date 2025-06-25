@@ -7,7 +7,7 @@ from .models import Escort, Image, Service
 from .util import get_cards, filter_escorts
 from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def index(request):
     vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:5]
     verified_escorts = Escort.objects.filter(escort_class="verified", gender='female')
@@ -34,7 +34,7 @@ def female_filters(request):
         return render(request, 'escorts/fileters.html', context)
     return redirect('escorts:index')
     
-
+@csrf_exempt
 def get_males(request):
     vips = Escort.objects.filter(escort_class="VIP", gender="male").order_by('?')[:5]
     verified_escorts = Escort.objects.filter(escort_class="verified", gender='male')

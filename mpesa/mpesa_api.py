@@ -1,6 +1,12 @@
+import importlib
 import requests
 # import mpesa_settings
-from mpesa import mpesa_settings
+# from mpesa import mpesa_settings
+
+try:
+    mpesa_settings = importlib.import_module("mpesa_settings")
+except ImportError:
+    from mpesa import mpesa_settings
 
 STK_REQUEST_BODY = mpesa_settings.STK_REQUEST_BODY
 HEADERS = mpesa_settings.HEADERS

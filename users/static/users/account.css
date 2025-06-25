@@ -228,3 +228,10 @@ select {
     
     
 }
+
+nav {
+    padding-right: 40px;
+    /* justify-content: center; */
+    box-sizing: border-box;
+    width: 100%;
+}

@@ -13,8 +13,16 @@ class Escort(models.Model):
     escort_class = models.CharField(max_length=100, null=True, default=None, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
     
+    @property
+    def status(self):
+        # latest_payment = self.payments.order_by('-payment_id').first()
+        # subscription_status = 'Expired' if latest_payment.is_overdue() else 'Active'
+        # return subscription_status
+        return 'Active'
+        
+
     def __str__(self):
-        return f"{self.name}, {self.gender}, {self.location}, {self.age}, {self.phone_number}, {self.body_type}, {self.skin_color}"
+        return f"{self.name} | {self.gender} | {self.location} | {self.phone_number} | {self.status}"
 
 
 class ProfilePicture(models.Model):

@@ -20,8 +20,8 @@
             <p>Find your perfect match for exotic quality services</p>
         </div>
         <div id="login-wrapper">
-            <div id="login">Login</div>
-            <div id="register">Register</div>
+            <a href="{% url 'users:login' %}"><div id="login">Login</div></a>
+            <a href="{% url 'users:register' %}"><div id="register">Register</div></a>
         </div>
     </nav>
 
