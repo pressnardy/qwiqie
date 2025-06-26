@@ -33,15 +33,36 @@ def filter_escorts(filter_form, escort_model, gender):
     except KeyError:
         pass
     try:
-        max_age = filter_form.cleaned_data['age'].split['-'][1].strip()
+        max_age = filter_form.cleaned_data['age'].split('-')[1].strip()
     except KeyError:
         pass
     try:
         skin_color = filter_form.cleaned_data['skin_color']
     except KeyError:
         pass
-    escorts = escort_model.objects.filter(gender=gender, age__gte=min_age, age__lte=max_age, body_type=body_type, skin_color=skin_color)
-    return escorts
+    escorts = escort_model.objects.filter(
+        gender=gender, age__gte=min_age, age__lte=max_age, body_type=body_type, skin_color=skin_color
+        )
+    vips = [escort for escort in escorts if escort.escort_class == 'VIP']
+    verified = [escort for escort in escorts if escort.escort_class == 'Verified']
+    general = [escort for escort in escorts if escort.escort_class == 'general']
+    return {
+        'vips': vips,
+        'verified': verified,
+        'general': general
+    }
 
     
+def format_phone_number(mobile_number, country_code='254'):
+    # Remove '+' if present
+    if country_code.startswith('+'):
+        country_code = country_code[1:]
+    
+    # Remove leading 0 from mobile number if present
+    if mobile_number.startswith('0') and len(mobile_number) == 10:
+        mobile_number = mobile_number[1:]
+    
+    return f"{country_code}{mobile_number}"
 
+# Example usage:
+print(format_phone_number("0712345678", "+254"))  # Output: 254712345678

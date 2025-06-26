@@ -14,12 +14,13 @@ def push_stk(request):
     if request.method == 'POST':
         form = PaymentForm(request.POST)
         if form.is_valid():
-            escort_phone = str(form.cleaned_data['escort_phone'])
+            payment_phone = str(form.cleaned_data['payment_phone'])
             amount = str(form.cleaned_data['amount'])
-            response_code = mpesa_api.send_stk_push(escort_phone, amount, escort_phone)['ResponseCode']
+            escort_phone = str(form.cleaned_data['escort_phone'])
+            response_code = mpesa_api.send_stk_push(payment_phone, amount, escort_phone)['ResponseCode']
             if response_code == '0':
-                context['response'] = 'Processing'
-    
+                return render(request, 'mpesa/processing.html')
+            return render(request, 'mpesa/error.html')
     context['form'] = PaymentForm()
     return render(request, 'mpesa/stk_pay.html', context)
 

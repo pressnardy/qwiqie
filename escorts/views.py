@@ -4,8 +4,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import ServiceForm, ImageForm, CreateEscortForm, EditEscortDetails, FilterForm
 from django.contrib import messages
 from .models import Escort, Image, Service
+from . import util
 from .util import get_cards, filter_escorts
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 def index(request):
@@ -28,10 +30,15 @@ def female_filters(request):
         filter_form = FilterForm(request.POST)
         print(filter_form)      
         escorts = filter_escorts(filter_form=filter_form, escort_model=Escort, gender='female')
+        filter_form = FilterForm()
         context = {
-            "escorts": escorts
+            'filter_form': filter_form,
+            'vips': get_cards(escorts['vips']), 
+            "verified_escorts": get_cards(escorts['verified']), 
+            "general_escorts": get_cards(escorts['general']),
         }
-        return render(request, 'escorts/fileters.html', context)
+
+        return render(request, 'escorts/index.html', context)
     return redirect('escorts:index')
     
 @csrf_exempt

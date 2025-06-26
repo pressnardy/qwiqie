@@ -3,35 +3,42 @@
 
 {% load static %}
 
-{% block title %}<title>Payment</title>{% endblock %}
+{% block title %}<title>Payment STK</title>{% endblock %}
 {% block specific_css %}
 <link rel="stylesheet" href="{% static 'users/register.css' %}">
 {% endblock %}
-
+{% block specific_scripts%}
+<script defer src="{% static 'mpesa/script.js' %}"></script>
+{% endblock %}
 {% block sections_wrapper %}
 <section id="login-section" class="registration-section">
     <div id="payment-title" class="payment-title">
-        <div><h2>Make Payment</h2></div> 
+        <div><h2>Make Payment STK</h2></div> 
         <div class="title-description">
-            <p>A STK code will be sent to your phone number below.</p>
+            <p>An STK code will be sent to your phone number below.</p>
             <p> Enter your pin to complete the payment</p>
         </div>
     </div>
     <br>
     <br>
     <div class="form-wrapper flex-column-center">
-        <form action="#" method="post" class="registration-form flex-column-center">
+        <form action="#" method="post" class="registration-form flex-column-center" id="stk-pay-form">
             {% csrf_token %}
             <div class="flex-column-center width-100">
+                
+                <label >Escort Phone:
+                <br>
+                {{ form.escort_phone }}
+                </label>
+                <label >Payment Phone:
+                <br>
+                {{ form.payment_phone }}
+                </label>
                 <label>Amount:
                 <br>
                 {{ form.amount}}
                 </label>
-                <label >Phone Number:
-                <br>
-                {{ form.escort_phone }}
-                </label>
-            <button type="submit" class="register-button">Make Payment</button>
+            <button type="submit" class="register-button" id="stk-pay-button">Make Payment</button>
             </div>
         </form>
     </div>

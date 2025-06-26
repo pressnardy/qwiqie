@@ -10,13 +10,15 @@
 {% block sections_wrapper %}
 <section id="payment-section" class="registration-section">
     <div id="escort-title" class="#">
-        <h2>Pay</h2> 
+        <h2>Make Payment</h2> 
     </div>
     <div class="form-wrapper">
         <form action="#" method="post" class="registration-form">
             {% csrf_token %}
-            <label for="email">Username:</label>
-            {{ form.phone_number}}
+            <label for="escort-phone">Escort Phone:</label>
+            {{ form.escort_phone}}
+            <label for="payment-phone">Payment Phone:</label>
+            {{ form.escort_phone}}
             <label for="amount">Amount:</label>
             {{ form.amount }}
             <button type="submit" href="#" class="register-button">Login</button>

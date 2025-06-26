@@ -1,0 +1,35 @@
+
+.hidden-login-wrapper {
+    display: none;
+}
+
+#accounts-nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#page-title {
+    min-width: 400px;
+}
+
+.nav-right {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* @media screen and (max-width: 600px) {
+    .nav-left {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .hidden-login-wrapper {
+        display: block;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+    #login-wrapper {
+        display: none;
+    }
+} */
+
