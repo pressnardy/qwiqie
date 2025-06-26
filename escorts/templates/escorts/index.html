@@ -3,7 +3,8 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, width=device-width, 
+     user-scalable=yes">
     {% block title %}
     <title>Qwiqie </title>
     {% endblock %}
@@ -11,14 +12,17 @@
     <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
     <link rel="stylesheet" href="{% static 'escorts/card.css' %}">
     <link rel="stylesheet" href="{% static 'escorts/filters.css' %}">
+    <link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
     <script defer src="{% static 'escorts/scripts/index.js' %}"></script>
     <script defer src="{% static 'escorts/scripts/events.js' %}"></script>
 </head>
 <body>
     <nav>
-        <div id="page-title">Qwiqie.com</div>
-        <div id="description">
-            <p>Find your perfect match for exotic quality services</p>
+        <div id="nav-left">
+            <div id="page-title">Qwiqie.com</div>
+            <div id="description">
+                <p>Find your perfect match for exotic quality services</p>
+            </div>
         </div>
         <div id="login-wrapper">
             <a href="{% url 'users:login' %}"><div id="login">Login</div></a>

@@ -11,6 +11,10 @@
   
   }
   
+  #nav-left {
+    display: flex;
+    flex-wrap: wrap;
+  }
   
   #page-title {
     font-size: 60px;

@@ -1,0 +1,123 @@
+:root {
+  --dark-red: #5e0307;
+  --light-red: #f5252f;
+  --background-green: #279e03;
+  --purple: #bf047e;
+  --light-purple: #f799d6;
+  --pink-background: #fae6f3;
+  --purple-gray: #5e4455;
+  --white: white;
+  --black: black;
+
+}
+
+#search-box {
+    padding: 4px 10px;
+    padding-left: 16px;
+    border: 1px solid var(--purple-gray);
+    border-radius: 20px;
+    display: none;
+}
+
+input#search {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--black);
+    background-color: var(--pink-background);
+}
+
+button#search-button {
+    background-color: var(--pink-background);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    position:relative;
+    left: 8px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    #login-wrapper {
+        font-size: 20px;
+    }
+
+    label.btn-filter {
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+
+    #gender.filter-wrapper {
+        border: none;
+    }
+
+    #search-box {
+        display: block;
+    }
+
+    #page-title {
+    font-size: 40px;
+    }
+
+    nav {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    #nav-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 24px;
+    }
+
+    #filters {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    form#female-filters {
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    }
+    #counties {
+    display: none;
+    }
+    #escorts-wrapper {
+    flex-direction: column;
+    align-items: center;
+    }
+    .ads {
+    border-top: 1px solid var(--light-purple);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    }
+
+    input.form-input {
+        min-width: 200px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+    #description {
+        display: none;
+    }
+
+    #filters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 48px;
+    }
+
+    #female-filter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 24px;
+    }
+}
