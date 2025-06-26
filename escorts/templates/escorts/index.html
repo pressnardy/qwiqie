@@ -28,7 +28,7 @@
 
     {% block fiters %}
     <section id="filters">
-        <form action="" id="gender-filter" class="filter-form" method="post">
+        <form action="{% url 'escorts:filter_gender' %}" id="gender-filter" class="filter-form" method="post">
             <div id="gender" class="filter-wrapper">
                 <div class="filter-title">Gender</div>
                 <label class="btn-filter no-wrap">

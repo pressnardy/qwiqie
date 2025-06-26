@@ -41,11 +41,13 @@ def female_filters(request):
         return render(request, 'escorts/index.html', context)
     return redirect('escorts:index')
     
+
+   
 @csrf_exempt
-def get_males(request):
-    vips = Escort.objects.filter(escort_class="VIP", gender="male").order_by('?')[:5]
-    verified_escorts = Escort.objects.filter(escort_class="verified", gender='male')
-    general_escorts = Escort.objects.filter(escort_class="general", gender="male")
+def get_females(request):
+    vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:5]
+    verified_escorts = Escort.objects.filter(escort_class="verified", gender='female')[:5]
+    general_escorts = Escort.objects.filter(escort_class="general", gender="female")[:5]
     form = FilterForm()
     context = {
         'form': form,
@@ -54,6 +56,22 @@ def get_males(request):
         "general_escorts": get_cards(general_escorts),
     }
     return render(request, "escorts/escorts.html", context)
+
+
+@csrf_exempt
+def filter_gender(request):
+    gender = request.POST['gender']
+    vips = Escort.objects.filter(escort_class="VIP", gender=gender).order_by('?')[:5]
+    verified_escorts = Escort.objects.filter(escort_class="verified", gender=gender)
+    general_escorts = Escort.objects.filter(escort_class="general", gender=gender)
+    form = FilterForm()
+    context = {
+        'filter_form': form,
+        'vips': get_cards(vips), 
+        "verified_escorts": get_cards(verified_escorts), 
+        "general_escorts": get_cards(general_escorts),
+    }
+    return render(request, "escorts/index.html", context)
 
 
 
