@@ -3,7 +3,9 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, width=device-width,
+     interactive-widget=resizes-content user-scalable=yes">
     {% block title %}
     <title>Qwiqie </title>
     {% endblock %}
@@ -15,7 +17,7 @@
     <script defer src="{% static 'escorts/scripts/index.js' %}"></script>
 </head>
 <body>
-    <nav>
+    <nav style="border: none;">
         <div id="page-title">Qwiqie.com</div>
         <div id="description">
             <p>Find your perfect match for exotic quality services</p>
