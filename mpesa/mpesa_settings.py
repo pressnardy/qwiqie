@@ -2,6 +2,8 @@ from datetime import datetime
 import base64
 import requests
 import os
+import dotenv
+
 from dotenv import load_dotenv
 load_dotenv()
 

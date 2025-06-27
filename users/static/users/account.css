@@ -19,7 +19,7 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      /* gap: 24px; */
       justify-content: space-between;
       align-items: center;
       min-height: 100vh;
@@ -115,7 +115,7 @@ textarea {
 
 .escorts-grid-headings {
     display: grid;
-    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
     gap: 16px;
     justify-items: center;
     /* width: 90%; */
@@ -127,7 +127,7 @@ textarea {
 
 .escorts-grid-contents {
     display: grid;
-    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
     gap: 16px;
     justify-items: center;
     /* width: 90%; */
@@ -249,4 +249,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.description-section {
+    width: 100%;
+    background: var(--dark-red);
+}
+
+#description {
+    color: var(--white);
+    font-size: 24px;
+}
+
+.nav-right {
+    padding-top: 40px;
 }
