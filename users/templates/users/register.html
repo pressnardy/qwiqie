@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Options</title>
-    {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'users/register.css' %}">
-    {% endblock %}
-</head>
-<body>        
+
+{% extends "users/account.html" %}
+
+{% load static %}
+
+{% block title %}<title>Login</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'users/register.css' %}">
+<link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
     <section id="escort-registration" class="registration-section">
-        <div id="escort-title" class="bg-black color-white">
+        <div id="escort-title">
             <h2>Create Account</h2> 
         </div>
         <div id="escort-form" class="form-wrapper">
@@ -25,9 +25,10 @@
                 {{form.password1}}
                 <label for="password">Confirm Password:</label>
                 {{form.password2}}
+                <div class="submit-button-wrapper">
                 <button type="submit" href="#" class="register-button">Register</button>
+                </div>
             </form>
         </div>
     </section>
-</body>
-</html>
+{% endblock %}
