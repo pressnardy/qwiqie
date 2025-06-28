@@ -26,10 +26,11 @@ p {
     nav {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
-    #login-wrapper {
+    /* #login-wrapper {
         display: none;
-    }
+    } */
     .submit-button-wrapper {
         display: flex;
         align-items: center;
@@ -43,12 +44,16 @@ p {
         display: none;
     }
     .escorts-grid-headings {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(3, minmax(25vw, 1fr));
     }
     .escorts-grid-contents {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(3, minmax(25vw, 1fr));
+    }
+
+    p {
+        font-size: 18px;
     }
 }
 

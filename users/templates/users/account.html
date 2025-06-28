@@ -19,9 +19,11 @@
             <div id="page-title">Qwiqie.com</div>
         </div>
         <div class="nav-right">
+            {% block login %}
             <div id="login-wrapper">
                 <div id="login"> <a href="{% url 'users:logout' %}" style="text-decoration: none;"> Logout </a></div>
             </div>
+            {% endblock %}
         </div>
     </nav>
     <section class="description-section">

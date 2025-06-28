@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from datetime import datetime
 from escorts.models import Escort
 
 class Payment(models.Model):
@@ -15,5 +14,4 @@ class Payment(models.Model):
 
     def escort_name(self):
         return self.escort.name
-    
     
