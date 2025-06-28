@@ -39,6 +39,17 @@ p {
     .register-button {
         font-size: 24px;
     }
+    .item.escort-phone {
+        display: none;
+    }
+    .escorts-grid-headings {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    }
+    .escorts-grid-contents {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    }
 }
 
 

@@ -3,8 +3,8 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, width=device-width, 
-     user-scalable=yes">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, width=device-width,
+     interactive-widget=resizes-content user-scalable=no">
     {% block title %}<title>Account</title>{% endblock %}
     <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
     <link rel="stylesheet" href="{% static 'users/account.css' %}">
@@ -32,7 +32,7 @@
     </section>
     <br>
     {% block sections_wrapper %}
-    <div class="sections-wrapper">
+    <!-- <div class="sections-wrapper"> -->
     
     <section id="agency-profile" class="profile-section flex-center-column">
         <div class="profile-heading flex-center-column">
@@ -53,19 +53,19 @@
         <div id="escorts-list">
             <div class="escorts-grid-headings">
                 <div class="item">Name</div>
-                <div class="item">Phone</div>
+                <div class="item escort-phone">Phone</div>
                 <!-- <div class="item">Location</div> -->
                 <!-- <div class="item">Gender</div> -->
-                <div class="item">Class</div>
+                <div class="item escort-class">Class</div>
                 <!-- <div class="item">Age</div> -->
             </div>
             <div class="escorts-grid-contents">
                 {% for escort in escorts %}
                     <div class="item">{{ escort.name }}</div>
-                    <div class="item">{{ escort.phone_number }}</div>
+                    <div class="item escort-phone">{{ escort.phone_number }}</div>
                     <!-- <div class="item">{{ escort.location }}</div> -->
                     <!-- <div class="item">{{ escort.gender }}</div> -->
-                    <div class="item">{{ escort.escort_class }}</div>
+                    <div class="item escort-class">{{ escort.escort_class }}</div>
                     <!-- <div class="item">{{ escort.age }}</div> -->
                     <a class="edit-escort" href="{% url 'escorts:profile' escort.phone_number %}">View</a>
                 {% endfor %}
@@ -79,7 +79,7 @@
         </div>
     </section>
     {% endblock %}
-    </div>
+    <!-- </div> -->
     <br>
     <br>
     {% block footer %}
