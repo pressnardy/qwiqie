@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, width=device-width, 
      user-scalable=yes">
     {% block title %}
-    <title>Qwiqie </title>
+    <title>Qwiqee </title>
     {% endblock %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VkzjZ+z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
@@ -19,7 +19,7 @@
 <body>
     <nav>
         <div id="nav-left">
-            <div id="page-title">Qwiqie.com</div>
+            <div id="page-title">Qwiqee.com</div>
             <div id="description">
                 <p>Find your perfect match for exotic quality services</p>
             </div>
@@ -41,6 +41,7 @@
                 <label class="btn-filter no-wrap">
                     <input class="input-gender" type="radio" name="gender" id="straight-male" value="male"> Male
                 </label>
+                
             </div>
         </form>
         <form action="{% url 'escorts:female_filters' %}" id="female-filters"  class="filter-form" method="post">
@@ -68,9 +69,23 @@
         </form>
     </section>
     {% endblock %}
+    <section class="search-section">
+        <br>
+         <form id="search-box" action="{% url 'escorts:filter_location' %}" method="post" class="search-box">
+            <input type="text" id="search" placeholder="Search location" class="search-input" name="location">
+            <button id="search-button" type="submit" form="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#f799d6" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7" stroke="#f799d6" stroke-width="2" fill="none"/>
+                    <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#f799d6" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </form>
+        <br>
+    </section>
     {% block ads_secotion %}
     <section id="escorts-wrapper">
         {% block location_filter %}
+        
         <div id="counties">
             <div id="counties-title" class="bg-black color-white">
                 <h1>Select Location</h1> 
@@ -157,7 +172,7 @@
     </section>
     {% endblock %}
     <div style="display: none;" id="location_filter">
-        <form action="" method="get" id="location-filter-form">
+        <form action="{% url 'escorts:filter_location' %}" method="post" id="location-filter-form">
             <input type="text" name="location" id="location">
         </form>
     </div>

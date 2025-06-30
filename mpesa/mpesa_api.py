@@ -7,6 +7,8 @@ try:
     mpesa_settings = importlib.import_module("mpesa_settings")
 except ImportError:
     from mpesa import mpesa_settings
+except Exception as e:
+    pass
 
 STK_REQUEST_BODY = mpesa_settings.STK_REQUEST_BODY
 HEADERS = mpesa_settings.HEADERS
@@ -33,5 +35,6 @@ def send_stk_push(phone_number, amount, account_reference):
 
 
 if __name__ == "__main__":
-    print(send_stk_push('254706088217', '10', '254706088217'))
+    # print(send_stk_push('254706088217', '10', '254706088217'))
+    pass
 

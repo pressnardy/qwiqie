@@ -66,3 +66,17 @@ def format_phone_number(mobile_number, country_code='254'):
 
 # Example usage:
 print(format_phone_number("0712345678", "+254"))  # Output: 254712345678
+
+def filter_by_location(escort_model, location):
+    vips = escort_model.objects.filter(
+        escort_class="VIP", location=location).order_by('?')[:5]
+    verified_escorts = escort_model.objects.filter(
+        escort_class="verified", location=location).order_by('?')[:5]
+    general_escorts = escort_model.objects.filter(
+        escort_class="general", location=location).order_by('?')[:5]
+    
+    return {
+        'vips': vips, 'verified': verified_escorts, 'general': general_escorts
+    }
+
+

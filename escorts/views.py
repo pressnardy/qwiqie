@@ -23,6 +23,24 @@ def index(request):
     }
     return render(request, "escorts/index.html", context)
 
+@csrf_exempt
+def filter_location(request):
+    print('called')
+    context = {
+        'filter_form': FilterForm(),
+    }
+    if request.method == 'POST':
+        print("post")
+        location = request.POST['location']
+        escorts = util.filter_by_location(Escort, location=location)
+        context = {
+        'filter_form': FilterForm(),
+        'vips': get_cards(escorts['vips']), 
+        "verified_escorts": get_cards(escorts['verified']), 
+        "general_escorts": get_cards(escorts['general']),
+        }
+        return render(request, 'escorts/index.html', context)
+
 
 @csrf_exempt
 def female_filters(request):
@@ -60,20 +78,21 @@ def get_females(request):
 
 @csrf_exempt
 def filter_gender(request):
-    gender = request.POST['gender']
-    vips = Escort.objects.filter(escort_class="VIP", gender=gender).order_by('?')[:5]
-    verified_escorts = Escort.objects.filter(escort_class="verified", gender=gender)
-    general_escorts = Escort.objects.filter(escort_class="general", gender=gender)
-    form = FilterForm()
-    context = {
-        'filter_form': form,
-        'vips': get_cards(vips), 
-        "verified_escorts": get_cards(verified_escorts), 
-        "general_escorts": get_cards(general_escorts),
-    }
-    return render(request, "escorts/index.html", context)
-
-
+    if request.method == 'POST':
+        print('gender called')
+        gender = request.POST['gender']
+        vips = Escort.objects.filter(escort_class="VIP", gender=gender).order_by('?')[:5]
+        verified_escorts = Escort.objects.filter(escort_class="verified", gender=gender)
+        general_escorts = Escort.objects.filter(escort_class="general", gender=gender)
+        form = FilterForm()
+        context = {
+            'filter_form': form,
+            'vips': get_cards(vips), 
+            "verified_escorts": get_cards(verified_escorts), 
+            "general_escorts": get_cards(general_escorts),
+        }
+        return render(request, "escorts/index.html", context)
+    
 
 def view_escort(request, phone_number):
     """
@@ -201,3 +220,4 @@ def pay(request, escort_phone):
             
             pass   
     return 
+

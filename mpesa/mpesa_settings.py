@@ -62,5 +62,6 @@ def send_stk_push():
 
 
 if __name__ == "__main__":
-    print(send_stk_push())
+    # print(send_stk_push())
+    pass
 

@@ -11,7 +11,12 @@
 
 }
 
-#search-box {
+.search-section {
+    display: none;
+
+}
+
+.search-box {
     padding: 4px 10px;
     padding-left: 16px;
     border: 1px solid var(--purple-gray);
@@ -38,6 +43,13 @@ button#search-button {
 }
 
 @media screen and (max-width: 600px) {
+    .search-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--pink-background);
+        padding: 10px;
+    }
     #login-wrapper {
         font-size: 20px;
     }
@@ -51,8 +63,10 @@ button#search-button {
         border: none;
     }
 
-    #search-box {
-        display: block;
+    .search-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     #page-title {
