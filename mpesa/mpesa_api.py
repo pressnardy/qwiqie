@@ -26,6 +26,7 @@ def send_stk_push(phone_number, amount, account_reference):
     STK_REQUEST_BODY['PhoneNumber'] = str(phone_number)
     STK_REQUEST_BODY['AccountReference'] = str(account_reference) 
     
+    
     try:
         response = requests.post(url=URL, json=STK_REQUEST_BODY, headers=HEADERS).json()
         
@@ -35,6 +36,6 @@ def send_stk_push(phone_number, amount, account_reference):
 
 
 if __name__ == "__main__":
-    # print(send_stk_push('254706088217', '10', '254706088217'))
-    pass
+    print(send_stk_push('254706088217', '10', '254706088217'))
+    
 

@@ -27,6 +27,7 @@ def push_stk(request):
 
 @csrf_exempt
 def get_callback(request):
+    print("Callback received")  # Debugging line to confirm callback is hit
     if request.method == "POST":
         try:
             body = json.loads(request.body.decode("utf-8"))
@@ -51,3 +52,9 @@ def get_callback(request):
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
 
+def test_post(request):
+    if request.method == 'POST':
+        amount = request.POST['amount']
+        print(f"Received amount: {amount}")  # Debugging line to confirm amount is received
+        return HttpResponse(f"Amount received: {amount}")
+    return render(request, 'mpesa/testpost.html')  # Render the form for testing
