@@ -85,6 +85,7 @@ if DATABASE_URL:
     DATABASES = {
         "default": dj_database_url.parse(DATABASE_URL)
     }
+    print(DATABASE_URL)
 else:
     # Fallback for build phase or local dev
     DATABASES = {
