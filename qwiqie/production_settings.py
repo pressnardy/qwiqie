@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'qwiqie.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-DATABASE_URL = os.environ.get("DATABASE_URL", None)
+# DATABASE_URL = os.environ.get("DATABASE_URL", None)
 # if DATABASE_URL:
-DATABASES = {
-    "default": dj_database_url.parse(DATABASE_URL)
-}
+#     DATABASES = {
+#         "default": dj_database_url.parse(DATABASE_URL)
+#     }
 #     print(DATABASE_URL)
 # else:
 #     # Fallback for build phase or local dev
@@ -103,19 +103,19 @@ DATABASES = {
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT', '25060'),
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#         },
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),  # DigitalOcean uses username as db name
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '25060'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
