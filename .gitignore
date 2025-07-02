@@ -4,3 +4,5 @@ venv
 .env
 staticfiles
 rok.py
+__pycache__
+*.pyc
