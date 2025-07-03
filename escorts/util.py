@@ -54,18 +54,18 @@ def filter_escorts(filter_form, escort_model, gender):
 
     
 def format_phone_number(mobile_number, country_code='254'):
-    # Remove '+' if present
-    if country_code.startswith('+'):
+    if not mobile_number.isdigit():
+        raise ValueError("Mobile number must be numeric")
+    if not 10 >= len(mobile_number) >= 9:
+        raise ValueError("Mobile number wrong format")
+    if str(country_code).startswith('+'):
         country_code = country_code[1:]
     
-    # Remove leading 0 from mobile number if present
-    if mobile_number.startswith('0') and len(mobile_number) == 10:
+    if str(mobile_number).startswith('0') and len(mobile_number) == 10:
         mobile_number = mobile_number[1:]
     
     return f"{country_code}{mobile_number}"
 
-# Example usage:
-print(format_phone_number("0712345678", "+254"))  # Output: 254712345678
 
 def filter_by_location(escort_model, location):
     vips = escort_model.objects.filter(

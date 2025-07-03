@@ -19,26 +19,38 @@ class Escort(models.Model):
     body_type = models.CharField(max_length=100, null=True, default=None, blank=True)
     escort_class = models.CharField(max_length=100, null=True, default=None, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
-    
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def on_free_trial(self):
+        free_trial_end_date = self.date_created + relativedelta(months=1)
+        return timezone.now().date() <= free_trial_end_date.date()
+
     @admin.display(description='status')
     def status(self):
-        latest_payment = self.payments.order_by('-payment_id').first()
         subscription_status = 'Expired' if self.is_overdue() else 'Active'
         return subscription_status
         
     def renewal_date(self):
-        latest_payment = self.payments.order_by('-payment_id').first()
-        monthly_fee = self.monthly_fee()
-        months_paid = latest_payment.amount // monthly_fee
-        next_month_date = latest_payment.timestamp + relativedelta(months=months_paid)
-        return next_month_date.date()
+        if latest_payment := self.payments.order_by('-payment_id').first():
+            monthly_fee = self.monthly_fee()
+            months_paid = latest_payment.amount // monthly_fee
+            if self.on_free_trial():
+                months_paid = latest_payment.amount // monthly_fee + 1
+        
+            next_payment_date = latest_payment.timestamp + relativedelta(months=months_paid)
+            return next_payment_date.date()
+        return None
 
     def monthly_fee(self):
         payment_env_var = self.escort_class.upper() + "_MONTHLY_FEE"
         return int(os.getenv(payment_env_var))  
 
     def is_overdue(self):
-        return timezone.now().date() > self.renewal_date()
+        if self.on_free_trial():
+            return False
+        if self.renewal_date():
+            return timezone.now().date() > self.renewal_date()
+        return True
     
     def __str__(self):
         return f"{self.name} | {self.gender} | {self.phone_number} | {self.status()} | {self.renewal_date()}"
