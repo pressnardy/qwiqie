@@ -1,7 +1,9 @@
 from datetime import datetime
+import pytz
 import base64
 import requests
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,7 +17,9 @@ MPESA_CREDENTIALS_URL =  os.getenv('MPESA_CREDENTIALS_URL')
 MPESA_STK_PUSH_URL = os.getenv('MPESA_STK_PUSH_URL')
 MPESA_CALLBACK_URL = os.getenv('MPESA_CALLBACK_URL')
 
-TIMESTAMP = datetime.now().strftime('%Y%m%d%H%M%S')
+tz = pytz.timezone('Africa/Nairobi')
+
+TIMESTAMP = datetime.now(tz).strftime('%Y%m%d%H%M%S')
 STK_PASSWORD = base64.b64encode((MPESA_BUSINESS_SHORTCODE + MPESA_PASSKEY + TIMESTAMP).encode()).decode()
 
 
