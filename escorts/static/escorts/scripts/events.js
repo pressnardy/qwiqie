@@ -25,13 +25,13 @@ const towns = document.querySelectorAll('li.town');
 towns.forEach(town => {
     town.addEventListener('click', () => {
         const filterForm = document.getElementById('location-filter-form');
-        const selectedTown = town.textContent;
-        const formInput = filterForm.getElementsByTagName('input');
+        const selectedTown = town.textContent.toLocaleLowerCase();
+        console.log(selectedTown);
+        const formInput = filterForm.querySelector('input#location');
         formInput.value = selectedTown;
-        filterForm.submit()
-    })
-})
-
+        filterForm.submit();
+    });
+});
 
 const genderInputs = document.querySelectorAll('.input-gender');
 
