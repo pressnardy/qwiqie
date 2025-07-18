@@ -45,11 +45,6 @@
                 <h1>{{ user.username }}</h1>
             </div>          
         </div>
-        <br>
-        <br>
-        <div class="flex-center">
-            <a href="{% url 'mpesa:stk_push' %}" id="pay-button" class="big-green-button">Make Payment</a>
-        </div>
     </section>
     <section class="manage-escorts">
         <div class="section-heading">
@@ -81,6 +76,13 @@
         <br>
         <div class="flex-center">
             <a href="{% url 'escorts:create_escort' %}" class="edit-escort">Add Escort</a>
+        </div>
+    </section>
+    <section>
+        <br>
+        <br>
+        <div class="flex-center">
+            <a href="{% url 'mpesa:stk_push' %}" id="pay-button" class="green-button">Make Payment</a>
         </div>
     </section>
     {% endblock %}

@@ -297,3 +297,11 @@ img.profile-picture {
 .pink-border-bottom {
     border-bottom: 1px solid var(--light-purple);
 }
+
+.purple-button {
+    color: var(--white);
+    background: var(--purple);
+    border: 1px solid var(--purple);
+    border-radius: 5px;
+    padding: 10px;
+}
