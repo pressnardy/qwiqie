@@ -10,14 +10,17 @@
     <link rel="stylesheet" href="{% static 'users/account.css' %}">
     {% block specific_css %}
     <link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+    <script defer src="{% static 'users/events.js' %}"></script>
     {% endblock %}
     {% block specific_scripts %}{% endblock %}
 </head>
 <body>
     <nav id="accounts-nav">
+        <a href="{% url 'escorts:index' %}">
         <div class="nav-left">
             <div id="page-title">Qwiqee.com</div>
         </div>
+        </a>
         <div class="nav-right">
             {% block login %}
             <div id="login-wrapper">

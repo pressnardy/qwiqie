@@ -95,15 +95,22 @@ section {
 }
 
 .form-wrapper {
-width: 80%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
 }
+
 .registration-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    /* gap: 4px; */
     width: 80%;
+    max-width: 400px;
 }
+
 
 .form-input {
     box-sizing: border-box;
@@ -111,9 +118,10 @@ width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin: 5px 0 10px 0;
     font-size: 16px;
-    min-width: 200px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .svg-checkmark-green {
@@ -148,3 +156,101 @@ width: 80%;
 /* .nav-right {
     display: none;
 } */
+
+#no-account {
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#username-constraints{
+    font-size: 14px;
+    /* padding: 0 5px 5px 10px ; */
+}
+
+a#signup-redirect {
+    color: var(--dark-red);
+    cursor: pointer;
+}
+
+#password-constraints {
+    font-size: 14px;
+    /* padding: 0 5px 5px 10px ; */
+}
+
+svg#eye-closed, svg#eye-open {
+    width: 24px;
+    height: 20px;
+    margin-bottom: 5px;
+    position: relative;
+    left: -35px;
+}
+
+#password-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+#registration-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 300px;
+}
+
+.red-border-button {
+    display: block;
+    width: 100px;
+    text-align: center;
+    border: 1px solid var(--dark-red);
+    border-radius: 5px;
+    color: var(--dark-red);
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.red-button {
+    width: 140px;
+    border: 1px solid var(--dark-red);
+    border-radius: 5px;
+    color: var(--white);
+    background: var(--dark-red);
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.red-button:hover {
+    background: var(--light-red);
+    border: none;
+}
+
+.red-border-button:hover {
+    color: var(--white);
+    background-color: var(--dark-red);
+    
+}
+
+.red-border-button:hover ~ .red-button {
+        border: 1px solid var(--dark-red);
+        border-radius: 5px;
+        color: var(--dark-red);
+        background: white;
+}
+
+.registration-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+
+}
+
+.registration-title > h2 {
+    color: var(--dark-red);
+}
