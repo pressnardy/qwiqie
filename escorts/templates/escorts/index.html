@@ -105,12 +105,23 @@
                             <a href="{% url 'escorts:view_escort' escort.phone_number %}">
                                 <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
                             </a>
-                            <a href="{% url 'escorts:view_escort' escort.phone_number %}">
-                            <div class="transparent-details">
-                                <div class="escort-name capitalize">{{ escort.name }}</div>
-                            <div class="escort-location capitalize">{{ escort.location }}</div>
+                        </div>
+                        <div class="transparent-details">
+                            <div class="escort-name capitalize">{{ escort.name }}</div>
+                            <div class="escort-location capitalize">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="location-pin">            
+                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 
+                                        192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 
+                                        1 1 0 128 64 64 0 1 1 0-128z"/>
+                                    </svg>
+                                </div>
+                                {{ escort.location }}
+
                             </div>
-                            </a>
+                        </div>
+                        <div class="escort-bio">
+                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -130,12 +141,23 @@
                             <a href="{% url 'escorts:view_escort' escort.phone_number %}">
                                 <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
                             </a>
-                            <a href="{% url 'escorts:view_escort' escort.phone_number %}">
-                            <div class="transparent-details">
-                                <div class="escort-name capitalize">{{ escort.name }}</div>
-                            <div class="escort-location capitalize">{{ escort.location }}</div>
+                        </div>
+                        <div class="transparent-details">
+                            <div class="escort-name capitalize">{{ escort.name }}</div>
+                            <div class="escort-location capitalize">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="location-pin">            
+                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 
+                                        192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 
+                                        1 1 0 128 64 64 0 1 1 0-128z"/>
+                                    </svg>
+                                </div>
+                                {{ escort.location }}
+
                             </div>
-                            </a>
+                        </div>
+                        <div class="escort-bio">
+                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -154,12 +176,23 @@
                             <a href="{% url 'escorts:view_escort' escort.phone_number %}">
                                 <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
                             </a>
-                            <a href="{% url 'escorts:view_escort' escort.phone_number %}">
-                            <div class="transparent-details">
-                                <div class="escort-name capitalize">{{ escort.name }}</div>
-                            <div class="escort-location capitalize">{{ escort.location }}</div>
+                        </div>
+                        <div class="transparent-details">
+                            <div class="escort-name capitalize">{{ escort.name }}</div>
+                            <div class="escort-location capitalize">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="location-pin">            
+                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 
+                                        192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 
+                                        1 1 0 128 64 64 0 1 1 0-128z"/>
+                                    </svg>
+                                </div>
+                                {{ escort.location }}
+
                             </div>
-                            </a>
+                        </div>
+                        <div class="escort-bio">
+                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -171,6 +204,7 @@
             </div>
         </div>
         {% endblock %}
+        <br>
     </section>
     {% endblock %}
     <div style="display: none;" id="location_filter">

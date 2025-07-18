@@ -12,37 +12,38 @@
   }
 
 .card {
-    height: 400px;
-    width: 280px;
-    /* border: 1px solid var(--dark-red); */
+    height: 490px;
+    width: 296px;
+    border: 1px solid var(--purple);
+    padding: 8px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    margin-bottom: 72px;
-    /* margin: 48px 12px; */
-
+    justify-content: space-between;
+    border-radius: 10px;
+    
 }
 
 .image-wrapper {
-    height: 400px;
+    height: 320px;
     width: 280px;
 }
 
 .card-image {
-    height: 400px;
+    height: 320px;
     width: 280px;
     object-fit: cover;
 }
 
 .transparent-details {
     width: 100%;
-    height: 20%;
-    position: relative;
-    top: -21%;
-    opacity: 0.6;
-    color: var(--white);
-    background: var(--light-purple);
-    margin-bottom: -21%;
+    color: var(--light-purple);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 0 5px;
+    box-sizing: border-box;
 
 }
 
@@ -51,7 +52,7 @@
     text-align: center;
     padding: 8px 0 8px 0;
     text-transform: capitalize;
-
+    text-shadow: 1px 1px 2px rgb(90, 85, 85);
 }
 
 .escort-location {
@@ -59,8 +60,19 @@
     font-size: 16px;
     padding: 8px 0 8px 0;
     text-transform: capitalize;
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+    gap: 12px;
     
 }
+
+.location-pin {
+    width: 16px;
+    height: 16px;
+    fill: var(--light-purple);
+}
+
 
 a.escort-phone {
     text-decoration: none;
@@ -69,17 +81,22 @@ a.escort-phone {
 }
 
 .escort-phone {
-    background-color: var(--background-green);
-    color: var(--white);
+    background-color: var(--light-purple);
+    color: var(--background-green);
     box-sizing: border-box;
     text-align: center;
     padding: 8px 0 8px 0;
-
+    font-weight: bold;
+    border-radius: 10px;
 }
 
-
+.escort-bio {
+    padding: 0 5px;
+    box-sizing: border-box;
+}
 
 a {
     text-decoration: none;
 }
+
 

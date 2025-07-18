@@ -8,10 +8,10 @@ const generalAds = document.getElementById("general-ads");
 const cardHTML = `
     <div class="image-wrapper">
       <img src="assets/images/escort.jpg" alt="Card Image" class="card-image">
-      <div class="transparent-details">
+    </div>
+    <div class="transparent-details">
         <div class="escort-name">Diana</div>
         <div class="escort-location">Thika</div>
-      </div>
     </div>
     <div class="escort-phone">
       <span class="phone-icon"></span>
