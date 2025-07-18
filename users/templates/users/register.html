@@ -3,30 +3,58 @@
 
 {% load static %}
 
-{% block title %}<title>Login</title>{% endblock %}
+{% block title %}<title>Register</title>{% endblock %}
 {% block specific_css %}
 <link rel="stylesheet" href="{% static 'users/register.css' %}">
 <link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+<script defer src="{% static 'users/events.js' %}"></script>
 {% endblock %}
-
+{% block login %}
+    <div id="login-wrapper">
+        <div id="login"> <a href="{% url 'users:login' %}" style="text-decoration: none;"> Login </a></div>
+    </div>
+{% endblock %}
 {% block sections_wrapper %}
     <section id="escort-registration" class="registration-section">
-        <div id="escort-title">
+        <div id="escort-title" class="registration-title">
             <h2>Create Account</h2> 
         </div>
         <div id="escort-form" class="form-wrapper">
             <form action="#" method="post" class="registration-form">
                 {% csrf_token %}
-                <label for="username">Username:</label>
+                <label for="username">Username<span id="asterix" style="color: red;">*</span></label>
                 {{ form.username }}
-                <label for="phone">Phone Number:</label>
+                <br>
+                <label for="phone">Phone Number<span id="asterix" style="color: red;">*</span></label>
                 {{ form.phone_number }}
-                <label for="password">Password:</label>
-                {{form.password1}}
-                <label for="password">Confirm Password:</label>
-                {{form.password2}}
-                <div class="submit-button-wrapper">
-                <button type="submit" href="#" class="register-button">Register</button>
+                <br>
+                <label for="password">Password<span id="asterix" style="color: red;">*</span>
+                    <div id="password-group">
+                        <input type="password" id="password" name="password1" class="form-input" required>
+                        <div id="svg-container"></div>
+                    </div>
+                </label>
+                <div id="password-constraints">
+                    <ul>
+                        <li>Atleast 8 characters</li>
+                        <li>Must include letters and numbers</li>
+                    </ul>
+                </div>
+                <br>
+                <label for="password">Confirm Password<span id="asterix" style="color: red;">*</span>
+                    <div id="password-group">
+                        <input type="password" id="password2" name="password2" class="form-input" required>
+                        <div id="svg-container"></div>
+                    </div>
+                </label>
+                <br>
+                <div id="registration-buttons">
+                    <div>
+                        <button type="submit" href="#" class="red-button">Sign up</button>
+                    </div>
+                    <div>
+                        <a href="{% url 'users:login' %}" class="red-border-button">Login</a>
+                    </div>
                 </div>
             </form>
         </div>

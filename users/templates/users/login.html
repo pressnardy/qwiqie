@@ -31,7 +31,7 @@
                 {% csrf_token %}
                 <label for="email">Username<span id="asterix" style="color: red;">*</span>
                     <div id="signup-group">
-                        <input type="text" name="username" id="username" class="form-input">
+                        <input type="text" name="username" id="username" class="form-input" required>
                     </div>
                 </label>
                 <div id="username-constraints">
@@ -42,7 +42,7 @@
                 <br>
                 <label for="password">Password<span id="asterix" style="color: red;">*</span>
                     <div id="password-group">
-                        <input type="password" id="password" name="password" class="form-input">
+                        <input type="password" id="password" name="password" class="form-input negative-margin" required>
                         <div id="svg-container"></div>
                     </div>
                 </label>
@@ -54,11 +54,11 @@
                 </div>
                 <br>
                 <div id="registration-buttons">
-                    <div>
+                    <div class="registration-button-wrapper">
                         <button type="submit" href="#" class="red-button">Login</button>
                     </div>
-                    <div>
-                        <a class="red-border-button">Sign up</a>
+                    <div class="registration-button-wrapper">
+                        <a href="{% url 'users:register' %}" class="red-border-button">Sign up</a>
                     </div>
                 </div>
                 <br>
