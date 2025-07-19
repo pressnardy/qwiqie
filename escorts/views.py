@@ -137,7 +137,7 @@ def create_escort(request):
 @login_required
 def delete_escort(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
-    if escort and request.method == "POST":    
+    if escort and escort.created_by == request.user:  
         escort.delete()
         messages.success(request, 'Escort deleted successfully!')
     return redirect('users:account')

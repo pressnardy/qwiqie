@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Escort
+from . models import Escort, Image
 
 
 @admin.register(Escort)
@@ -11,4 +11,7 @@ class EscortAdmin(admin.ModelAdmin):
     
     def renewal_data(self, obj):
         return obj.renewal_date()
-    
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display =['image_field', 'escort_id']
