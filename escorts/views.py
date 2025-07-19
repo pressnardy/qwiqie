@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def index(request):
-    vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:5]
+    vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:10]
     verified_escorts = Escort.objects.filter(escort_class="verified", gender='female')
     general_escorts = Escort.objects.filter(escort_class="general", gender="female")
     filter_form = FilterForm()
