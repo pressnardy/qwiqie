@@ -1,0 +1,92 @@
+
+:root {
+    --dark-red: #5e0307;
+    --light-red: #f5252f;
+    --background-green: #279e03;
+    --purple: #bf047e;
+    --light-purple: #f799d6;
+    --pink-background: #fae6f3;
+    --purple-gray: #5e4455;
+    --white: white;
+    --black: black;
+    --gray-shadow: 1px 1px 2px rgb(90, 85, 85);
+  
+  }
+
+#highlights {
+
+    min-width: 150px;
+    height: 100%;
+}
+
+#highlights-wrapper {
+    height: 100vh;
+    position: relative;
+    left: -24px;
+}
+
+#services-title {
+    color: var(--purple);
+    font-style: italic;
+    font-size: 32px;
+    margin-bottom: 10px;
+    position: relative;
+    left: -20px;
+
+}
+
+.highlights-service {
+    padding: 5px 10px;
+    border: 1px solid var(--light-purple);
+    border-radius: 10px;
+    /* margin: 0 5px 5px 10px; */
+    font-style: italic;
+    color: var(--purple);
+    font-weight: bold;
+    width: fit-content;
+    /* text-shadow: var(--gray-shadow); */
+    /* background: var(--white); */
+
+
+}
+
+#locations-title {
+    font-family: 28px;
+    color: var(--purple);
+    position: relative;
+    
+    
+}
+
+.highlights-pin {
+    fill: var(--light-purple);
+    text-shadow: var(--gray-shadow);
+    width: 24px;
+    height: 24px;
+}
+
+#hot-locations {
+    padding: 10px;
+    border-radius: 15px;
+    /* background: var(--purple); */
+    margin-left: 10px;
+}
+
+.highlight-location {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: var(--gray-shadow);
+    color: var(--white);
+    padding: 10px 15px;
+    background: var(--purple);
+    border-radius: 15px;
+    margin-bottom: 5px;
+    width: fit-content;
+    font-style: italic;
+}
+
+.highlight-location:hover {
+    background: var(--light-purple);
+    cursor: pointer;
+}
