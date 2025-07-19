@@ -28,7 +28,10 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'phone_number', 'password1', 'password2']
 
-    
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username.lower() if username else username
+
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
@@ -39,4 +42,8 @@ class CustomAuthenticationForm(AuthenticationForm):
         'class': 'form-input',
         'id': 'password',
     }))
+    
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username.lower() if username else username
 

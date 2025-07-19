@@ -14,4 +14,4 @@ class EscortAdmin(admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    list_display =['image_field', 'escort_id']
+    list_display =['image_field', 'escort']

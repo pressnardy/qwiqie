@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def index(request):
-    vips = Escort.objects.filter(escort_class="VIP", gender="female").order_by('?')[:10]
+    vips = Escort.objects.filter(escort_class="vip", gender="female")
     verified_escorts = Escort.objects.filter(escort_class="verified", gender='female')
     general_escorts = Escort.objects.filter(escort_class="general", gender="female")
     filter_form = FilterForm()
@@ -192,7 +192,7 @@ def add_image(request, phone_number):
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
-            image.escort_id = escort
+            image.escort = escort
             image.created_by = request.user
             image.save()
             return redirect('escorts:profile', phone_number=phone_number)

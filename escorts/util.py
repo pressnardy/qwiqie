@@ -4,16 +4,13 @@ def get_cards(escorts):
     cards = []
     for escort in escorts:
         first_image = escort.images.first()
-
-        if first_image:
-            image_url = first_image.image_field.url
-        else:
-            image_url = '#'
+        if not first_image:
+            continue
         card = {
             "name": escort.name,
             "phone_number": escort.phone_number,
             "location": escort.location,
-            "profile_picture": image_url
+            "profile_picture": first_image.image_field.url
         }
         cards.append(card)
     return cards
