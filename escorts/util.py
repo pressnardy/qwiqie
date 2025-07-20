@@ -70,7 +70,7 @@ def format_phone_number(mobile_number, country_code='254'):
 def filter_by_location(escort_model, location):
     print(location)
     vips = escort_model.objects.filter(
-        escort_class="VIP", location=location).order_by('?')[:5]
+        escort_class="vip", location=location).order_by('?')[:5]
     verified_escorts = escort_model.objects.filter(
         escort_class="verified", location=location).order_by('?')[:5]
     general_escorts = escort_model.objects.filter(
@@ -79,5 +79,19 @@ def filter_by_location(escort_model, location):
     return {
         'vips': vips, 'verified': verified_escorts, 'general': general_escorts
     }
+
+
+def clean_phone(phone):
+    if " " in phone:
+        phone = phone.split()
+    numbers = [i for i in phone if i.isdigit()]
+    if len(numbers) < 10:
+        raise ValueError(f'phone number must be atleast 10 digits current is {"".join(numbers)} is not')
+    digits = ['254'] + numbers[-9:]
+    return ''.join(digits)
+
+
+    
+    
 
 

@@ -5,7 +5,7 @@ from django.utils import timezone
 import os
 from dotenv import load_dotenv
 from dateutil.relativedelta import relativedelta
-
+from escorts import util
 
 load_dotenv()
 
@@ -29,6 +29,10 @@ class Escort(models.Model):
     escort_class = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.phone_number = util.clean_phone(self.phone_number)
+        super().save(*args, **kwargs)
 
     def on_free_trial(self):
         free_trial_end_date = self.date_created + relativedelta(months=1)

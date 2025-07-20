@@ -8,7 +8,7 @@ const paymentForm = document.getElementById('stk-pay-form')
 payButton.addEventListener('click', (e)=> {
     e.preventDefault()
     if (!isValidFormat(escortNumber.value) || !isValidFormat(paymentNumber.value)) {
-        alert('wrong format for phone number: Enter phone number thats does not start with 0 or + e.g 254723654723')
+        alert('Phone number should not start with "0" or "+". \ Accepted format is "254723654723" where the first 3 digits are country code')
         return;
     }
     paymentForm.submit()

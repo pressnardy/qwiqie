@@ -166,7 +166,7 @@ def add_service(request, phone_number):
         return HttpResponse("You Need to Create an Escort Profile First")
     if request.method == "POST":
         form = ServiceForm(request.POST or None)
-        form.instance.escort_id = escort
+        form.instance.escort = escort
         form.instance.created_by = request.user
         if form.is_valid():
             form.save()
