@@ -42,8 +42,28 @@ button#search-button {
     border-radius: 50%;
 }
 
+#top-towns {
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
-    
+    #filters {
+        padding-top: 20px;
+    }
+    #top-towns {
+        display: flex;
+        font-size: 16px;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-weight: bold;
+        color: var(--light-purple);
+        padding-bottom: 10px;
+        text-decoration: underline;
+        justify-content: center;
+    }
+    #description {
+        padding-top: 0;
+    }
     section#escorts-wrapper {
         min-height: fit-content;
     }

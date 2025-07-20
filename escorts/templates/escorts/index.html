@@ -35,6 +35,14 @@
 
     {% block fiters %}
     <section id="filters">
+        <div id="top-towns">
+            <div class="town">Nairobi</div>
+            <div class="town">Thika</div>
+            <div class="town">Kisumu</div>
+            <div class="town">Mombasa</div>
+            <div class="town">Nakuru</div>
+            <div class="town">Embu</div>
+        </div>
         <form action="{% url 'escorts:filter_gender' %}" id="gender-filter" class="filter-form" method="post">
             <div id="gender" class="filter-wrapper">
                 <div class="filter-title">Gender</div>
@@ -234,16 +242,16 @@
                         </svg>
                     </div> -->
                     <div id="hot-locations">
-                        <a class="highlight-location">Juja</a>
-                        <a class="highlight-location">Kilimani</a>
-                        <a class="highlight-location">Roysambu</a>
-                        <a class="highlight-location">Thika</a>
-                        <a class="highlight-location">Embakasi</a>
-                        <a class="highlight-location">Donny</a>
-                        <a class="highlight-location">Embu</a>
-                        <a class="highlight-location">Westy</a>
-                        <a class="highlight-location">Langata</a>
-                        <a class="highlight-location">South C</a>
+                        <a class="highlight-location town">Juja</a>
+                        <a class="highlight-location town">Kilimani</a>
+                        <a class="highlight-location town">Roysambu</a>
+                        <a class="highlight-location town">Thika</a>
+                        <a class="highlight-location town">Embakasi</a>
+                        <a class="highlight-location town">Donny</a>
+                        <a class="highlight-location town">Embu</a>
+                        <a class="highlight-location town">Westy</a>
+                        <a class="highlight-location town">Langata</a>
+                        <a class="highlight-location town">South C</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ countyNames.forEach(countyName => {
 // Updated version using counties.querySelector('.towns')
 
 
-const towns = document.querySelectorAll('li.town');
+const towns = document.querySelectorAll('.town');
 
 towns.forEach(town => {
     town.addEventListener('click', () => {
@@ -41,3 +41,4 @@ genderInputs.forEach(gender => {
         genderFilter.submit()
     })
 })
+
