@@ -18,7 +18,12 @@
     <nav id="accounts-nav">
         <a href="{% url 'escorts:index' %}">
         <div class="nav-left">
-            <div id="page-title">Qwiqee.com</div>
+            <div id="page-title">
+                Qwiqee.com
+                <div>
+                    <a href="{% url 'escorts:index' %}"><h1 style="border: 1px solid white; font-size: 16px; width: fit-content; padding: 10px;" id="home">Home</h1></a>
+                </div>
+            </div>
         </div>
         </a>
         <div class="nav-right">
