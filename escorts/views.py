@@ -31,7 +31,9 @@ def filter_location(request):
     }
     if request.method == 'POST':
         print("post")
-        location = request.POST['location']
+        location = request.POST['location'].lower()
+        if not location:
+            return redirect('escorts:index')
         escorts = util.filter_by_location(Escort, location=location)
         context = {
         'filter_form': FilterForm(),

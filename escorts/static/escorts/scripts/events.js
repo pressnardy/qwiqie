@@ -41,10 +41,3 @@ genderInputs.forEach(gender => {
         genderFilter.submit()
     })
 })
-
-// const searchButton = document.getElementById('search-button');
-// searchButton.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     const searchForm = document.getElementById('search-box')
-//     searchForm.submit()
-// })

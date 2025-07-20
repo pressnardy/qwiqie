@@ -43,6 +43,16 @@ button#search-button {
 }
 
 @media screen and (max-width: 600px) {
+    
+    section#escorts-wrapper {
+        min-height: fit-content;
+    }
+
+    .ads-flex {
+        height: fit-content;
+        min-height: fit-content;
+    }
+
     .search-section {
         display: flex;
         align-items: center;
