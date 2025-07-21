@@ -28,7 +28,7 @@ class Escort(models.Model):
     body_type = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
     escort_class = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=False)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
 
     def save(self, *args, **kwargs):
@@ -67,7 +67,7 @@ class Escort(models.Model):
         return True
     
     def __str__(self):
-        return f"{self.name} | {self.gender} | {self.phone_number} | {self.status()} | {self.renewal_date()}"
+        return f"{self.name} | {self.gender} | {self.phone_number} | {self.is_overdue()} | {self.renewal_date()}"
 
 
 class ProfilePicture(models.Model):
