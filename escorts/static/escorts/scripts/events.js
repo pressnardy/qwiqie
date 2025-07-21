@@ -60,3 +60,16 @@ arrow.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
+const phoneNumbers = document.querySelectorAll('a.escort-phone');
+console.log(phoneNumbers)
+phoneNumbers.forEach(anchor => {
+    const text = anchor.textContent.trim();
+    const lastNine = text.slice(-9);
+    const formattedPhone = `0${lastNine}`;
+    
+    anchor.innerText = formattedPhone;
+    anchor.href = `tel:${formattedPhone}`;
+    console.log(anchor)
+});
+
