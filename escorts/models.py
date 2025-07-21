@@ -64,8 +64,9 @@ class Escort(models.Model):
         if not escort_class:
             escort_class = 'vip'
         payment_env_var = str(self.escort_class).upper() + "_MONTHLY_FEE"
-        escort_monthly_fee = int(os.getenv(payment_env_var)) 
-        return escort_monthly_fee 
+        if payment_env_var:
+            escort_monthly_fee = int(os.getenv(payment_env_var)) 
+        return escort_monthly_fee or None
 
 
     def is_overdue(self):
