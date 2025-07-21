@@ -4,13 +4,13 @@ from . models import Escort, Image
 
 @admin.register(Escort)
 class EscortAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone_number', 'escort_class', 'monthly_fee', 'renewal_date', 'is_overdue']
+    list_display = ['name', 'phone_number', 'escort_class', 'monthly_fee', 'renewal_date', 'status']
 
     def monthly_fee(self, obj):
         return obj.monthly_fee()
     
-    def is_overdue(self, obj):
-        return obj.is_overdue()
+    def status(self, obj):
+        return obj.status()
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):

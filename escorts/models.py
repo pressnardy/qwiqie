@@ -36,6 +36,8 @@ class Escort(models.Model):
         super().save(*args, **kwargs)
 
     def on_free_trial(self):
+        if not self.date_created:
+            return False
         free_trial_end_date = self.date_created + relativedelta(months=1)
         return timezone.now().date() <= free_trial_end_date.date()
 
@@ -67,7 +69,7 @@ class Escort(models.Model):
         return True
     
     def __str__(self):
-        return f"{self.name} | {self.gender} | {self.phone_number} | {self.is_overdue()} | {self.renewal_date()}"
+        return f"{self.name} | {self.gender} | {self.phone_number} | {self.status()} | {self.renewal_date()}"
 
 
 class ProfilePicture(models.Model):
