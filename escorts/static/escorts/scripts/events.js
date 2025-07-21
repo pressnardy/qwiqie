@@ -42,3 +42,21 @@ genderInputs.forEach(gender => {
     })
 })
 
+
+const arrow = document.getElementById('arrow-up');
+
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const halfway = document.documentElement.scrollHeight / 3;
+
+    if (scrollPosition > halfway) {
+    arrow.style.display = 'block';
+    } else {
+    arrow.style.display = 'none';
+    }
+});
+
+arrow.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+

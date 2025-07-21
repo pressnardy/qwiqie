@@ -13,8 +13,9 @@ p {
 }
 
 #home {
-    display: none;
+    font-size: 18px;
 }
+
 @media screen and (max-width: 600px) {
     #home {
         display: block;

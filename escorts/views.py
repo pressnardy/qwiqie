@@ -101,6 +101,7 @@ def view_escort(request, phone_number):
     view only version of ecort profile targeting escort clients
     """
     escort = get_object_or_404(Escort, phone_number=phone_number)
+    escort.bio = util.get_bio(escort)
     services = escort.services.all()
     images = escort.images.all()
     context = {'escort': escort, 'services': services, 'images': images}    

@@ -29,21 +29,40 @@ const eyeOpenSvg = `
 `
 
 const viewPassword = document.getElementById('svg-container')
-viewPassword.innerHTML = eyeClosedSvg
+if (viewPassword) {
+    viewPassword.innerHTML = eyeClosedSvg
 
-viewPassword.addEventListener('click', ()=> {
-    const svgContainer = document.getElementById('svg-container')
-    const svg = svgContainer.querySelector('svg')
-    const svgId = svg.id
-    const password = document.getElementById('password')
-    
-    if (svgId === 'eye-closed'){
-        svgContainer.innerHTML = eyeOpenSvg
-        password.type = 'text'
+    viewPassword.addEventListener('click', ()=> {
+        const svgContainer = document.getElementById('svg-container')
+        const svg = svgContainer.querySelector('svg')
+        const svgId = svg.id
+        const password = document.getElementById('password')
+        
+        if (svgId === 'eye-closed'){
+            svgContainer.innerHTML = eyeOpenSvg
+            password.type = 'text'
+        }
+        if (svgId === 'eye-open') {
+            svgContainer.innerHTML = eyeClosedSvg
+            password.type = 'password'
+        }
+    });
+}
+
+const arrow = document.getElementById('arrow-up');
+
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const halfway = document.documentElement.scrollHeight / 2;
+
+    if (scrollPosition > halfway) {
+    arrow.style.display = 'block';
+    } else {
+    arrow.style.display = 'none';
     }
-    if (svgId === 'eye-open') {
-        svgContainer.innerHTML = eyeClosedSvg
-        password.type = 'password'
-    }
+});
+
+arrow.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 

@@ -10,10 +10,19 @@ def get_cards(escorts):
             "name": escort.name,
             "phone_number": escort.phone_number,
             "location": escort.location,
-            "profile_picture": first_image.image_field.url
+            "profile_picture": first_image.image_field.url,
+            'bio': get_bio(escort)
         }
         cards.append(card)
     return cards
+
+
+def get_bio(escort):
+    default_bio = f"I am {str(escort.name).title()}. Sexy hot escort from {str(escort.location).title()}. \
+    Call on me to satisfy your fantacies"
+    if str(escort.bio).lower() == 'none':
+        return default_bio
+    return escort.bio
 
 
 def get_random_ids(model):

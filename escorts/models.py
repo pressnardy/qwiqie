@@ -29,6 +29,7 @@ class Escort(models.Model):
     escort_class = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+    bio = models.TextField(max_length=110, null=True, blank=False, default=None)
 
     def save(self, *args, **kwargs):
         self.phone_number = util.clean_phone(self.phone_number)

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'escorts/index.css' %}">
     <link rel="stylesheet" href="{% static 'escorts/card.css' %}">
     <link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
+    <script defer src="{% static 'users/events.js' %}"></script>
     {% block specific_css%}
     {% endblock %}
     <script defer src="{% static 'escorts/scripts/index.js' %}"></script>
@@ -25,6 +26,7 @@
             <p>Find your perfect match for exotic quality services</p>
         </div>
         <div id="login-wrapper">
+            <a href="{% url 'escorts:index' %}"><h1 id="home">Home</h1></a>
             <div id="login"><a style="text-decoration: none;" href="{% url 'users:login' %}">Login</a></div>
             <div id="register"><a style="text-decoration: none;" href="{% url 'users:register' %}">Register</a></div>
         </div>
@@ -36,6 +38,17 @@
     
     {% endblock %}
     </div>
+    <section id="arrow-up-section">
+        <div id="arrow-up-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" 
+                fill-rule="evenodd" clip-rule="evenodd" 
+                viewBox="0 0 512 299.283" id="arrow-up"><path d="M75.334 286.691c-64.764 36.929-96.186-15.595-60.203-51.975L215.997 
+                25.104c33.472-33.472 46.534-33.472 80.006 0l200.866 209.612c35.983 36.38 4.561 88.904-60.203 51.975L256 
+                189.339 75.334 286.691z"/>
+            </svg>
+        </div>
+    </section>
     <footer>
         <div id="about-us">
             <h3>About us</h3>

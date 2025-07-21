@@ -28,6 +28,7 @@
             </div>
         </div>
         <div id="login-wrapper">
+            <a href="{% url 'escorts:index' %}"><div id="login">Home</div></a>
             <a href="{% url 'users:login' %}"><div id="login">Login</div></a>
             <a href="{% url 'users:register' %}"><div id="register">Register</div></a>
         </div>
@@ -130,7 +131,7 @@
                             </div>
                         </div>
                         <div class="escort-bio">
-                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
+                            {{ escort.bio }}
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -166,7 +167,7 @@
                             </div>
                         </div>
                         <div class="escort-bio">
-                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
+                            {{ escort.bio }}
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -201,7 +202,7 @@
                             </div>
                         </div>
                         <div class="escort-bio">
-                            I am beautiful curvy hot escort located Juja Modern Hospital Juja. I am an expert in BJs, Threesome
+                            {{ escort.bio }}
                         </div>
                         <div class="escort-phone">
                             <span class="phone-icon"></span>
@@ -263,6 +264,17 @@
             <input type="text" name="location" id="location">
         </form>
     </div>
+    <section id="arrow-up-section">
+        <div id="arrow-up-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" 
+                fill-rule="evenodd" clip-rule="evenodd" 
+                viewBox="0 0 512 299.283" id="arrow-up"><path d="M75.334 286.691c-64.764 36.929-96.186-15.595-60.203-51.975L215.997 
+                25.104c33.472-33.472 46.534-33.472 80.006 0l200.866 209.612c35.983 36.38 4.561 88.904-60.203 51.975L256 
+                189.339 75.334 286.691z"/>
+            </svg>
+        </div>
+    </section>
     <footer>
         <div id="about-us">
             <h3>About us</h3>

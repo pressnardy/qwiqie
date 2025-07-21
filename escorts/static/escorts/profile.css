@@ -37,6 +37,17 @@ body {
     text-transform: capitalize;
 }
 
+#profile-bio-wrapper {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+    border-radius: 15px;
+    
+}
+
+
+
 #personal-details {
     display: flex;
     flex-direction: row;
@@ -305,3 +316,4 @@ img.profile-picture {
     border-radius: 5px;
     padding: 10px;
 }
+
