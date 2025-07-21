@@ -9,10 +9,12 @@ class CreateEscortForm(forms.ModelForm):
         ("petite", "petite"), ("medium", "medium"), ("curvy", "curvy")
         ]
     GENDERS = [('female', 'female'), ('male', 'male')]
+    CLASSES = [('vip', 'VIP'), ('verified', 'verified'), ('general', 'general')]
     
     body_type = forms.ChoiceField(choices=BODY_TYPES, required=False)
     skin_color = forms.ChoiceField(choices=SKIN_COLORS, required=False)
     gender = forms.ChoiceField(choices=GENDERS, required=True)
+    escort_class = forms.ChoiceField(choices=CLASSES, required=True)
     class Meta:
         model = Escort
         fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
