@@ -24,9 +24,9 @@ class Escort(models.Model):
     age = models.IntegerField()
     location = LowercaseTextField(max_length=50)
     phone_number = models.CharField(max_length=15, primary_key=True)
-    skin_color = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
-    body_type = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
-    escort_class = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
+    skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=True)
+    body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)
+    escort_class = LowercaseTextField(max_length=100, null=True, default='vip', blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=False)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
@@ -49,6 +49,8 @@ class Escort(models.Model):
     def renewal_date(self):
         if latest_payment := self.payments.order_by('-payment_id').first():
             monthly_fee = self.monthly_fee()
+            if not monthly_fee:
+                return None
             months_paid = latest_payment.amount // monthly_fee
             if self.on_free_trial():
                 months_paid = latest_payment.amount // monthly_fee + 1
@@ -58,8 +60,13 @@ class Escort(models.Model):
         return None
 
     def monthly_fee(self):
-        payment_env_var = self.escort_class.upper() + "_MONTHLY_FEE"
-        return int(os.getenv(payment_env_var))  
+        escort_class = self.escort_class
+        if not escort_class:
+            escort_class = 'vip'
+        payment_env_var = str(self.escort_class).upper() + "_MONTHLY_FEE"
+        escort_monthly_fee = int(os.getenv(payment_env_var)) 
+        return escort_monthly_fee 
+
 
     def is_overdue(self):
         if self.on_free_trial():
