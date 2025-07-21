@@ -64,10 +64,11 @@ class Escort(models.Model):
         if not escort_class:
             escort_class = 'vip'
         payment_env_var = str(self.escort_class).upper() + "_MONTHLY_FEE"
-        if payment_env_var:
-            escort_monthly_fee = int(os.getenv(payment_env_var)) 
-        return escort_monthly_fee or None
-
+        escort_monthly_fee = os.getenv(payment_env_var)
+        if escort_monthly_fee and escort_monthly_fee.isdigit():
+            return int(escort_monthly_fee)
+        return None
+    
 
     def is_overdue(self):
         if self.on_free_trial():
