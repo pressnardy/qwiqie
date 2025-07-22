@@ -23,7 +23,7 @@ class Escort(models.Model):
     gender = LowercaseTextField(max_length=20)
     age = models.IntegerField()
     location = LowercaseTextField(max_length=50)
-    address = LowercaseTextField(max_length=100, null=True, default='County,Town,Area', blank=False)
+    address = LowercaseTextField(max_length=100, null=True, default=None, blank=False)
     phone_number = models.CharField(max_length=15, primary_key=True)
     skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=False)
     body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)

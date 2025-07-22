@@ -31,7 +31,7 @@ class CreateEscortForm(forms.ModelForm):
             "escort_class":  forms.TextInput(attrs={"class": "form-input", "id": "escort-class"}),
             "skin_color": forms.TextInput(attrs={"class": "form-input", "id": "skin-color"}),
             "body_type": forms.TextInput(attrs={"class": "form-input", "id": "body-type"}),
-            "address": forms.TextInput(attrs={"class": "form-input", "id": "address", 'placeholder': 'county,town,area'}),
+            "address": forms.TextInput(attrs={"class": "form-input", "id": "address", 'placeholder': 'Address in format: County,Town,Area'}),
             "bio": forms.Textarea(attrs={
                 "class": "text-area", "id": "bio", 'rows': 3, 'cols': 40,
                 'placeholder': 'Type a short catchy description of yourself'
