@@ -44,7 +44,13 @@
     </section>
     <br>
     {% block sections_wrapper %}
-    <!-- <div class="sections-wrapper"> -->
+    <section id="message-success">
+        {% if message %}
+        <div class="{{ message.tags }}" style="color: green;">
+            {{ message }}
+        </div>
+        {% endif %}
+    </section>
     
     <section id="agency-profile" class="profile-section flex-center-column">
         <div class="profile-heading flex-center-column">

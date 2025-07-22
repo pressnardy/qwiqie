@@ -13,14 +13,22 @@ def account(request):
     context = {"user": user, "escorts": escorts}
     return render(request, 'users/account.html', context)
 
+def first_login(request, message):
+    user = request.user
+    message = message.replace(",", " ")
+    escorts = Escort.objects.filter(created_by=request.user)
+    context = {"user": user, "escorts": escorts, 'message':message}
+    return render(request, 'users/account.html', context)
+
 
 def register(request):
+    message = 'Successful,registration.,Enjoy,your,free,trial,subscription'
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)  
-            return redirect('users:account')  
+            return redirect('users:first_login', message)  
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
@@ -47,7 +55,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'You have been successfully logged out.')
+    # messages.success(request, 'You have been successfully logged out.')
     return redirect('escorts:index')
 
 

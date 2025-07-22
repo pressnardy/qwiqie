@@ -1,0 +1,27 @@
+
+{% extends "users/account.html" %}
+
+{% load static %}
+
+{% block title %}<title>Register</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'users/register.css' %}">
+<link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+<script defer src="{% static 'users/events.js' %}"></script>
+{% endblock %}
+{% block login %}
+    <div id="login-wrapper">
+        <div id="login"> <a href="{% url 'users:login' %}" style="text-decoration: none;"> Login </a></div>
+    </div>
+{% endblock %}
+{% block sections_wrapper %}
+    <div id="registration-success-section">
+        <div>
+            <p id="registration-successful">You have successfully completed registration. Enjoy your free trial subscription.</p>
+        </div>
+        <div id="redirect-links">
+            <a id="home" href="{% url 'escorts:index' %}">Home</a>
+            <a id="login" href="{% url 'users:login' %}">Login Now</a>
+        </div>
+    </div>
+{% endblock %}

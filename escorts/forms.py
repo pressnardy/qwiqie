@@ -9,7 +9,7 @@ class CreateEscortForm(forms.ModelForm):
         ("petite", "petite"), ("medium", "medium"), ("curvy", "curvy")
         ]
     GENDERS = [('female', 'female'), ('male', 'male')]
-    CLASSES = [('vip', 'VIP'), ('verified', 'verified'), ('general', 'general')]
+    CLASSES = [('vip', 'vip'), ('verified', 'verified'), ('general', 'general')]
     
     body_type = forms.ChoiceField(choices=BODY_TYPES, required=False)
     skin_color = forms.ChoiceField(choices=SKIN_COLORS, required=False)
