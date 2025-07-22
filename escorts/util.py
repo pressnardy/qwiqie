@@ -124,3 +124,4 @@ def cleaned_address(address):
     if address:
         address_list = address.strip().replace(' ', '').split(",")
         return ''.join(address)
+    
