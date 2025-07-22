@@ -67,7 +67,7 @@ function insertGeneralCards(escortNames) {
 
 const counties = [
   {"name": "nairobi", "towns": ["embakasi", "kilimani", "karen", "westlands", "langata", "nairobi central"]},
-  {"name": "mombasa", "towns": ["likoni", "nyali", "changamwe", "kisauni", "mtongwe", "shanzu"]},
+  {"name": "mombasa", "towns": ["mombasa town", "likoni", "nyali", "changamwe", "kisauni", "mtongwe", "shanzu"]},
   {"name": "kisumu", "towns": ["milimani", "nyalenda", "kondele", "mamboleo", "dunga", "kibos"]},
   {"name": "nakuru", "towns": ["naivasha", "gilgil", "rongai", "njoro", "molo", "subukia"]},
   {"name": "kiambu", "towns": ["thika", "ruiru", "githunguri", "limuru", "kikuyu", "kiambu town"]},

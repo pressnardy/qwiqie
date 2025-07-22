@@ -23,16 +23,19 @@ class Escort(models.Model):
     gender = LowercaseTextField(max_length=20)
     age = models.IntegerField()
     location = LowercaseTextField(max_length=50)
+    address = LowercaseTextField(max_length=100, null=True, default='nairobi,nairobi,nairobi', blank=False)
     phone_number = models.CharField(max_length=15, primary_key=True)
-    skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=True)
+    skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=False)
     body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)
     escort_class = LowercaseTextField(max_length=100, null=True, default='vip', blank=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=False)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
+    
 
     def save(self, *args, **kwargs):
         self.phone_number = util.clean_phone(self.phone_number)
+        self.address = util.cleaned_address(self.address)
         super().save(*args, **kwargs)
 
     def on_free_trial(self):
@@ -77,6 +80,19 @@ class Escort(models.Model):
             return timezone.now().date() > self.renewal_date()
         return True
     
+    @classmethod
+    def all_locations(cls):
+        escorts = cls.objects.all()
+        locations = {}
+        for escort in escorts:
+            address = util.address_to_dict(escort.address)
+            town = address['town']
+            county = address['county']
+            if county not in  locations.keys():
+                locations[county] = set()
+            locations[county].add(town)
+        return locations
+    
     def __str__(self):
         return f"{self.name} | {self.gender} | {self.phone_number} | {self.status()} | {self.renewal_date()}"
 
@@ -105,3 +121,15 @@ class Service(models.Model):
     def __str__(self):
         return f"{self.service_name}, {self.price}"
     
+
+class County(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = LowercaseTextField(max_length=50)
+    
+
+class Town(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = LowercaseTextField(max_length=50)
+
+
+

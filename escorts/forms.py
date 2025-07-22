@@ -18,7 +18,7 @@ class CreateEscortForm(forms.ModelForm):
     class Meta:
         model = Escort
         fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
-                   'skin_color', 'body_type', "created_by", 'bio',
+                   'skin_color', 'body_type', "created_by", 'bio', 'address',
                      ]
 
         widgets = {
@@ -31,6 +31,7 @@ class CreateEscortForm(forms.ModelForm):
             "escort_class":  forms.TextInput(attrs={"class": "form-input", "id": "escort-class"}),
             "skin_color": forms.TextInput(attrs={"class": "form-input", "id": "skin-color"}),
             "body_type": forms.TextInput(attrs={"class": "form-input", "id": "body-type"}),
+            "address": forms.TextInput(attrs={"class": "form-input", "id": "address", 'placeholder': 'county,town,area'}),
             "bio": forms.Textarea(attrs={
                 "class": "text-area", "id": "bio", 'rows': 3, 'cols': 40,
                 'placeholder': 'Type a short catchy description of yourself'

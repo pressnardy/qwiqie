@@ -100,7 +100,27 @@ def clean_phone(phone):
     return ''.join(digits)
 
 
+def address_to_dict(address):
+    address_list = address.split(",")
+    address_list = [i.strip() for i in address_list]
+    address_dict = {}
     
+    count = 0
+    while count <= len(address_list) and count <= 3:
+        if count == 0:
+            address_dict['county'] = address_list[0]
+        if count == 1:
+            address_dict['town'] = address_list[1]
+        if count == 2:
+            address_dict['area'] = address_list[2]
+        else:
+            address_dict['street'] = address_list[3:]
+        count += 1
     
+    return address_dict
 
 
+def cleaned_address(address):
+    if address:
+        address_list = address.strip().replace(' ', '').split(",")
+        return ''.join(address)
