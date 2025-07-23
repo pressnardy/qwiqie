@@ -6,7 +6,7 @@ class CreateEscortForm(forms.ModelForm):
         ("dark skin", "darak_skin"), ("chocolate", "chocolate"), ("light skin", "light_skin"),
     ]
     BODY_TYPES = [
-        ("petite", "petite"), ("medium", "medium"), ("curvy", "curvy")
+        ("petite", "petite"), ("medium", "medium"), ("curvy", "curvy"), ('slim', 'slim'), ('mascular', 'mascular')
         ]
     GENDERS = [('female', 'female'), ('male', 'male')]
     CLASSES = [('vip', 'vip'), ('verified', 'verified'), ('general', 'general')]
@@ -60,7 +60,9 @@ class ServiceForm(forms.ModelForm):
 class EditEscortDetails(forms.ModelForm):
     class Meta:
         model = Escort
-        fields = '__all__'
+        fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
+                   'skin_color', 'body_type', "created_by", 'bio', 'address', 
+                     ]
         
 
 

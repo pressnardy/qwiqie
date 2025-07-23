@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Escort, Image
+from . models import Escort, Image, Town, County
 
 
 @admin.register(Escort)
@@ -15,3 +15,14 @@ class EscortAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display =['image_field', 'escort']
+
+
+@admin.register(Town)
+class TownAdmin(admin.ModelAdmin):
+    list_display =['id', 'name', 'county']
+
+
+@admin.register(County)
+class CountyAdmin(admin.ModelAdmin):
+    list_display =['id', 'name',]
+    

@@ -15,8 +15,73 @@ class LowercaseTextField(models.CharField):
 
     def pre_save(self, model_instance, add):
         value = getattr(model_instance, self.attname)
-        return value.lower() if value else value
-  
+        if value is None:
+            return value
+        if not isinstance(value, str):
+            value = str(value)
+        return value.lower()
+
+
+class County(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = LowercaseTextField(max_length=50, unique=True)
+    
+    @classmethod
+    def get(cls, county_name):
+        county_obj, created = cls.objects.get_or_create(name=county_name)
+        return county_obj
+    
+    @classmethod
+    def add_new(cls, county_name):
+        county_obj, created = cls.objects.update_or_create(name=county_name)
+        return county_obj
+
+    @classmethod
+    def get_towns_and_counties(cls):
+        locations = {}
+        counties = cls.objects.all()
+        for county in counties:
+            locations[county.name] = [town.name for town in county.towns.all()]
+        return locations
+    
+    def towns(self):
+        return self.towns.all()
+    
+    def escorts(self):
+        return self.escorts.all()
+    
+    def __str__(self):
+        return str(self.name)
+
+class Town(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = LowercaseTextField(max_length=50)
+    county = models.ForeignKey(County, on_delete=models.CASCADE, null=True, default=None, related_name='towns')
+    
+    @classmethod
+    def get_escorts(cls, town_name, county_name):
+        town = cls.add(town_name=town_name, county_name=county_name)
+        escorts = town.escorts.all()
+        return escorts
+    
+    def escorts(self):
+        return self.escorts.all()
+    
+    @classmethod
+    def add_new(cls, town_name, county_name):
+        county, created = County.objects.update_or_create(name=county_name)
+        town, created = cls.objects.update_or_create(name=town_name, county=county)
+        return created
+
+    @classmethod
+    def get(cls, town_name, county_name):
+        county, created = County.objects.get_or_create(name=county_name)
+        town, created = cls.objects.get_or_create(name=town_name, county=county)
+        return town
+    
+    def __str__(self):
+        return str(self.name)
+    
 
 class Escort(models.Model):
     name = LowercaseTextField(max_length=50)
@@ -28,14 +93,18 @@ class Escort(models.Model):
     skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=False)
     body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)
     escort_class = LowercaseTextField(max_length=100, null=True, default='vip', blank=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='escorts')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
-    
+    county = models.ForeignKey(County, on_delete=models.CASCADE, related_name='escorts', null=True, default=None)
+    town = models.ForeignKey(Town, on_delete=models.CASCADE, related_name='escorts', null=True, default=None)
 
     def save(self, *args, **kwargs):
         self.phone_number = util.clean_phone(self.phone_number)
         self.address = util.cleaned_address(self.address)
+        address_dict = util.address_to_dict(self.address)
+        self.county = County.get(county_name=address_dict['county'])
+        self.town = Town.get(town_name=address_dict['town'], county_name=self.county.name)
         super().save(*args, **kwargs)
 
     def on_free_trial(self):
@@ -121,15 +190,3 @@ class Service(models.Model):
     def __str__(self):
         return f"{self.service_name}, {self.price}"
     
-
-class County(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = LowercaseTextField(max_length=50)
-    
-
-class Town(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = LowercaseTextField(max_length=50)
-
-
-

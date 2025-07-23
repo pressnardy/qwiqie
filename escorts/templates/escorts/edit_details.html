@@ -17,7 +17,7 @@
                 {% csrf_token %}
                 <h3>Edit Escort Details</h3>
                 <div class="flex-column escort-wrapper">
-                    <div class="details-wrapper flex-column" >  
+                    <div class="details-wrapper flex-column">
                         <label for="escort-name">Name:</label>
                         {{ form.name}}
                         <label for="escort-name">Gender:</label>
@@ -38,6 +38,7 @@
                         {{ form.address }}
                         <label for="bio">Bio:</label>
                         {{ form.bio }}
+
                     </div>
                 </div>
                 <div class="buttons-wrapper">

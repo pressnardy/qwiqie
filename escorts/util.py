@@ -125,3 +125,8 @@ def cleaned_address(address):
         address_list = address.strip().replace(' ', '').split(",")
         return ''.join(address)
     
+
+def get_counties_and_towns(county_model):
+    ...
+
+
