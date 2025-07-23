@@ -10,7 +10,7 @@ django.setup()
 from escorts.models import County, Town
 
 counties = [
-  {"name": "nairobi", "towns": ["embakasi", "kilimani", "karen", "westlands", "langata", "nairobi central"]},
+  {"name": "nairobi", "towns": ["embakasi", "kilimani", "karen", "westlands", "langata", "nairobi central", 'TRM', 'kasarani', 'roysambu']},
   {"name": "mombasa", "towns": ["mombasa town", "likoni", "nyali", "changamwe", "kisauni", "mtongwe", "shanzu"]},
   {"name": "kisumu", "towns": ["milimani", "nyalenda", "kondele", "mamboleo", "dunga", "kibos"]},
   {"name": "nakuru", "towns": ["naivasha", "gilgil", "rongai", "njoro", "molo", "subukia"]},
