@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "users",
     "mpesa",
     "storages",  # For DigitalOcean Spaces
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
