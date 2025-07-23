@@ -25,10 +25,13 @@ def filter_location(request):
     }
     if request.method == 'POST':
         print("post")
-        location = request.POST['location'].lower()
+        location = request.POST['location'].lower().strip()
         if not location:
             return redirect('escorts:index')
         escorts = util.filter_by_location(Escort, location=location)
+        for k, v in escorts.items():
+            for i in v:
+                print(i)
         vips, verified, general = escorts['vips'], escorts['verified'], escorts['general']
         context = views_helpers.get_index_context(vips, verified, general)
         return render(request, 'escorts/index.html', context)

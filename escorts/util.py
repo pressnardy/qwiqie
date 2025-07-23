@@ -77,7 +77,9 @@ def format_phone_number(mobile_number, country_code='254'):
 
 
 def filter_by_location(escort_model, location):
-    print(location)
+    if location:
+        location = str(location).strip().lower()
+        # print(location)
     vips = escort_model.objects.filter(
         escort_class="vip", location=location).order_by('?')[:5]
     verified_escorts = escort_model.objects.filter(
