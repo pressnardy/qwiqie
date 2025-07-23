@@ -37,6 +37,7 @@ class Migration(migrations.Migration):
                 ('date_created', models.DateTimeField(auto_now_add=True, null=True)),
                 ('bio', models.TextField(default=None, max_length=110, null=True)),
                 ('county', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='escorts', to='escorts.county')),
+                ('town', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='escorts', to='escorts.town')),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='escorts', to=settings.AUTH_USER_MODEL)),
             ],
         ),
