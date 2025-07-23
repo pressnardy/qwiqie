@@ -93,11 +93,11 @@ class Escort(models.Model):
     skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=False)
     body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)
     escort_class = LowercaseTextField(max_length=100, null=True, default='vip', blank=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='escorts')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='escorts')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
-    county = models.ForeignKey(County, on_delete=models.CASCADE, related_name='escorts', null=True, default=None)
-    town = models.ForeignKey(Town, on_delete=models.CASCADE, related_name='escorts', null=True, default=None)
+    county = models.ForeignKey(County, on_delete=models.SET_NULL, related_name='escorts', null=True, default=None)
+    town = models.ForeignKey(Town, on_delete=models.SET_NULL, related_name='escorts', null=True, default=None)
 
     def save(self, *args, **kwargs):
         self.phone_number = util.clean_phone(self.phone_number)
@@ -168,24 +168,24 @@ class Escort(models.Model):
 
 class ProfilePicture(models.Model):
     image_id = models.AutoField(primary_key=True)
-    escort_id = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='profile_picture')
+    escort_id = models.ForeignKey(Escort, on_delete=models.SET_NULL, null=True, related_name='profile_picture')
     image_field = models.FileField(upload_to='profile_pics/', null=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=None, blank=True)
 
 
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True)
-    escort = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='images')
+    escort = models.ForeignKey(Escort, on_delete=models.SET_NULL, null=True, related_name='images')
     image_field = models.FileField(upload_to='images/', null=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=None, blank=True)
     
     
 class Service(models.Model):
     service_id = models.AutoField(primary_key=True)
     service_name = LowercaseTextField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    escort = models.ForeignKey(Escort, on_delete=models.CASCADE, related_name='services')
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None, blank=True)
+    escort = models.ForeignKey(Escort, on_delete=models.SET_NULL, null=True, related_name='services')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=None, blank=True)
 
     def __str__(self):
         return f"{self.service_name}, {self.price}"
