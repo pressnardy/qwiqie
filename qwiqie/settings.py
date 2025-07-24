@@ -29,7 +29,7 @@ DEBUG = DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # ALLOWED_HOSTS = ['cosmic-midge-presumably.ngrok-free.app', '127.0.0.1',]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'qwiqie-nqweq.ondigitalocean.app']
 # Application definition
 
 INSTALLED_APPS = [
