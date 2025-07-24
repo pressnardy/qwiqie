@@ -39,7 +39,7 @@ class County(models.Model):
     @classmethod
     def get_towns_and_counties(cls):
         locations = {}
-        counties = cls.objects.all()
+        counties = cls.objects.all().order_by('id')
         for county in counties:
             locations[county.name] = [town.name for town in county.towns.all()]
         return locations
