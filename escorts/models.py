@@ -28,12 +28,14 @@ class County(models.Model):
     
     @classmethod
     def get(cls, county_name):
+        county_name = str(county_name).lower()
         county_obj, created = cls.objects.get_or_create(name=county_name)
         return county_obj
     
     @classmethod
     def add_new(cls, county_name):
-        county_obj, created = cls.objects.update_or_create(name=county_name)
+        county_name = str(county_name).lower()
+        county_obj, created = cls.objects.get_or_create(name=county_name)
         return county_obj
 
     @classmethod
@@ -60,6 +62,8 @@ class Town(models.Model):
     
     @classmethod
     def get_escorts(cls, town_name, county_name):
+        county_name = str(county_name).lower()
+        county_name = str(town_name).lower()
         town = cls.add(town_name=town_name, county_name=county_name)
         escorts = town.escorts.all()
         return escorts
@@ -69,12 +73,16 @@ class Town(models.Model):
     
     @classmethod
     def add_new(cls, town_name, county_name):
+        county_name = str(county_name).lower()
+        county_name = str(town_name).lower()
         county, created = County.objects.update_or_create(name=county_name)
         town, created = cls.objects.update_or_create(name=town_name, county=county)
         return created
 
     @classmethod
     def get(cls, town_name, county_name):
+        county_name = str(county_name).lower()
+        county_name = str(town_name).lower()
         county, created = County.objects.get_or_create(name=county_name)
         town, created = cls.objects.get_or_create(name=town_name, county=county)
         return town
