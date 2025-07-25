@@ -16,6 +16,7 @@
 #highlights {
     
     min-width: 150px;
+    min-height: fit-content;
     height: 100%;
 }
 
@@ -104,7 +105,7 @@
 
 @media screen and (max-width: 600px) {
     #highlights-wrapper {
-        height: 500px;
+        height: fit-content;
         position:static;
         display: flex;
         flex-direction: row;

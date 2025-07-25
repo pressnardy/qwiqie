@@ -13,6 +13,7 @@ def account(request):
     context = {"user": user, "escorts": escorts}
     return render(request, 'users/account.html', context)
 
+@login_required
 def first_login(request, message):
     user = request.user
     message = message.replace(",", " ")

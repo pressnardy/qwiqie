@@ -7,7 +7,11 @@
 <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
 <link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
 {% endblock %}
-
+{% block account_redirect %}
+    <div>
+    <a href="{% url 'users:account' %}"><h1 id="home">Account</h1></a>
+    </div>
+{% endblock %}
 {% block sections_wrapper %}
 <section id="escort-profile" class="profile-section">
     <div class="profile-heading">

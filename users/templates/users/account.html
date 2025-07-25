@@ -30,6 +30,8 @@
                 <div>
                 <a href="{% url 'escorts:index' %}"><h1 id="home">Home</h1></a>
                 </div>
+            {% block account_redirect %}
+            {% endblock %}
             {% block login %}
                 <div id="login"> <a href="{% url 'users:logout' %}" style="text-decoration: none;"> Logout </a></div>
             {% endblock %}
