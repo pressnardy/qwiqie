@@ -1,0 +1,63 @@
+
+{% extends "users/account.html" %}
+
+{% load static %}
+
+{% block title %}<title>Terms and Conditions</title>{% endblock %}
+{% block specific_css %}
+<link rel="stylesheet" href="{% static 'users/register.css' %}">
+<link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'users/terms.css' %}">
+<script defer src="{% static 'users/events.js' %}"></script>
+{% endblock %}
+{% block login %}
+    <div id="login-wrapper">
+        <div id="login"> <a href="{% url 'users:login' %}" style="text-decoration: none;"> Login </a></div>
+    </div>
+{% endblock %}
+{% block sections_wrapper %}
+    <section id="terms" class="terms">
+        <div id="terms-wrapper">
+            <h1 class="terms-h1">Terms & Conditions</h1>
+    <p>The purpose of these Terms & Conditions is to provide the information necessary so that you may manage your use of the qwiqee website. These Terms will dictate your use of the Website and be fully applied. Using the qwiqee website means that you fully accept all terms & conditions herein.</p>
+    <p>Upon any disagreement with any of these Terms, you should refrain from using the qwiqee website. Those below 18, as well as minors, are NOT allowed to use qwiqee.</p>
+    <p>These Terms & Conditions comprise the entire agreement between you and qwiqee in the context of your use of this Website and replace all understandings and agreements made before.</p>
+
+    <h2 class="terms-h2">Intellectual Property Rights</h2>
+    <p class="terms-p">qwiqee and/or its licensors own all the materials and intellectual property rights that are included in the Website. Under these Terms you own your own content as specified in this Terms and that alone - this can include any images, video, audio, text or other material you decide to display on the qwiqee website.</p>
+    <p class="terms-p">By showing your Content, you provide qwiqee the right to publish, adapt, reproduce, distribute, and translate that content in any and all media. This license you grant this Website is sub-licensable, irrevocable, worldwide, and non-exclusive. The Content you upload should be your own and should not violate any rights of any 3rd party. qwiqee reserves the right to remove any of your Content without prior notice at any given time. You have limited license to view the materials contained on the qwiqee website and only for this purpose.</p>
+
+    <h2 class="terms-h2">Restrictions</h2>
+    <p class="terms-p">Under these Terms, you are not allowed to:</p>
+    <ul>
+        <li>Publish any material of this Website in other media.</li>
+        <li>Commercialise in any way (i.e. by sub-licensing, selling or any other) any material of this Website.</li>
+        <li>Publicly show or perform any material of this Website.</li>
+        <li>Engage in data extracting/harvesting/mining and similar activities in connection with this Website.</li>
+        <li>Use this Website to take part in any marketing or advertising activity.</li>
+        <li>Assign or subcontract or transfer any of your obligations and/or rights.</li>
+    </ul>
+    <p class="terms-p">You may also not use this Website in any way that:</p>
+    <ul>
+        <li>Is not compliant with applicable regulations and laws.</li>
+        <li>May cause damage to any business entity or person.</li>
+        <li>Could be or is harming the Website.</li>
+        <li>Affects users' access to it.</li>
+    </ul>
+    <p class="terms-p">We have restricted specific areas of this Website from being accessible to you. qwiqee holds the right to further limit access by you to any sections of its website in absolute discretion, at any given time. User password(s) and ID(s) you may have for the qwiqee website are confidential, and you should also ensure they remain private.</p>
+
+    <h2 class="terms-h2">Liability Limitation</h2>
+    <p>qwiqee, including its employees, directors, and officers, will not be held reliable for anything that may arise out of your use of this Website or anything that is in any way connected with your use of this Website, either a special liability or consequential or indirect. This includes liability that is under contract.</p>
+
+    <h2 class="terms-h2">Provisions & Severability</h2>
+    <p class="terms-p">qwiqee will remove any provisions of these Terms & Conditions that are void according to applicable laws. This deletion will not affect the remaining provisions written in this Terms.</p>
+
+    <h2 class="terms-h2">No Warranties</h2>
+    <p class="terms-p">qwiqee express no warranties or representation of any kind associated to the materials included on this Website or the Website itself. This Website is provided with all faults, and nothing contained on it should be regarded as advice to you.</p>
+
+    <h2 class="terms-h2">Indemnification</h2>
+    <p class="terms-p">As a result of these Terms, qwiqee holds no legal responsibility and will not be held liable for anything that is associated with your breach of any of the provisions mentioned in this Terms & Conditions document. You also indemnify qwiqee from and against any expenses, damages, causes of action, demands or costs related to you violating any of the provisions of these Terms.</p>
+    <p class="terms-p">qwiqee holds every legal right to revise and change these Terms & Conditions at any given time as it sees fit. Being a user of this Website, you should regularly review these Terms & Conditions. Under these Terms, qwiqee is allowed to subcontract, transfer or assign its obligations and/or rights without prior notice.</p>
+    </div>
+    </section>
+{% endblock %}

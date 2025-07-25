@@ -60,4 +60,5 @@ def logout_view(request):
     return redirect('escorts:index')
 
 
-
+def terms(request):
+    return render(request, 'users/terms.html')
