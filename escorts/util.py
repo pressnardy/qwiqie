@@ -8,6 +8,7 @@ def get_cards(escorts):
             continue
         card = {
             "name": escort.name,
+            'escort_class': escort.escort_class,
             "phone_number": escort.phone_number,
             "location": escort.location,
             "profile_picture": first_image.image_field.url,

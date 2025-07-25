@@ -21,7 +21,7 @@
     box-sizing: border-box;
     justify-content: space-between;
     border-radius: 10px;
-    
+    gap: 0;
 }
 
 .image-wrapper {
@@ -33,6 +33,7 @@
     height: 320px;
     width: 280px;
     object-fit: cover;
+    
 }
 
 .transparent-details {
@@ -99,4 +100,36 @@ a {
     text-decoration: none;
 }
 
+.badge-wrapper {
+    height: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: flex-end;
+    z-index: 1000;
+    background: var(--pink-background);
+    
+}
 
+.vip-badge {
+    position: relative;
+    box-sizing: border-box;
+    bottom: 25px;
+    left: -5px;
+    z-index: 500;
+    width: fit-content;
+    min-width: 50px;
+    height: 25px;
+    background: var(--pink-background);
+    fill: #279e03;
+    stroke: #279e03;
+    
+}
+
+.badge > text {
+    width: 40px;
+    height: 30px;
+    background: var(--pink-background);
+    fill: #279e03;
+    stroke: #279e03;
+}

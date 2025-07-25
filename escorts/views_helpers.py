@@ -3,17 +3,38 @@ from django.contrib import messages
 from escorts.models import Escort, Image, Service, County, Town
 from escorts import util
 
+HOT_SERVICES = [
+    'one night stand', 'Threesome', 'cum on face', 'BJ','hand job', 'extraball', 'bolls massage', 'girlfriend esxperience', 'sugar momy'
+    ]
 
-def get_index_context(vips, verified_escorts, general_escorts):
+def get_index_context(vips=None, verified_escorts=None, general_escorts=None):
+    services = HOT_SERVICES
     locations = County.get_towns_and_counties()
+    escorts = []
+    if vips:
+        escorts += vips
+    if general_escorts:
+        escorts += general_escorts
+    if verified_escorts:
+        escorts += verified_escorts
+    
     context = {
         'locations': locations,
+        'services': services,
         'filter_form': FilterForm(),
-        'vips': util.get_cards(vips), 
-        "verified_escorts": util.get_cards(verified_escorts), 
-        "general_escorts": util.get_cards(general_escorts),
+        'escorts': util.get_cards(escorts),
     }
     return context
+
+
+def search_service(service_name):
+    escorts = Escort.objects.all()
+    results = []
+    for escort in escorts:
+        if escort.services.filter(service_name=service_name.lower().strip()).first():
+            results.append(escort)
+    return results or None
+
 
 
 

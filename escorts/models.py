@@ -19,7 +19,7 @@ class LowercaseTextField(models.CharField):
             return value
         if not isinstance(value, str):
             value = str(value)
-        return value.lower()
+        return value.lower().strip()
 
 
 class County(models.Model):

@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('female/filters', views.female_filters, name='female_filters'),
     path('filters/location/', views.filter_location, name='filter_location'),
+    path('filter_service/<str:service_name>', views.filter_service, name='filter_service'),
     path('gender', views.filter_gender, name='filter_gender'),
     path('females', views.get_females, name='females'),
     path('view/<str:phone_number>', views.view_escort, name="view_escort"),

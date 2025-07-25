@@ -46,9 +46,7 @@
     color: var(--purple);
     font-weight: bold;
     width: fit-content;
-    /* text-shadow: var(--gray-shadow); */
-    /* background: var(--white); */
-
+    text-transform: capitalize;
 
 }
 

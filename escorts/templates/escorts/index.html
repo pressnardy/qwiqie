@@ -123,11 +123,20 @@
         {% block ads%}
         <div id="escorts-ads">
             <div class="ads">
-                <h2>VIP</h2>
+                <h3></h3>
                 <div class="ads-flex" id="vip-ads">
-                    {% for escort in vips %}
+                    {% for escort in escorts %}
                     <div class="card">
                         <div class="image-wrapper">
+                            {% if escort.escort_class == 'vip'  %}
+                            <div class="badge-wrapper">
+                                <svg width="00" height="00" xmlns="http://www.w3.org/2000/svg" class="vip-badge">
+                                    <text x="10" y="20" font-family="Arial" font-size="18" fill="#279e03" font-weight="bold">
+                                        {{ escort.escort_class.upper }}
+                                    </text>
+                                </svg>
+                            </div>
+                            {% endif %}
                             <a href="{% url 'escorts:view_escort' escort.phone_number %}">
                                 <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
                             </a>
@@ -158,91 +167,15 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="ads">
-                <h2>VERIFIED</h2>
-                <div class="ads-flex"  id="verified-ads">
-                    {% for escort in verified_escorts %}
-                    <div class="card">
-                        <div class="image-wrapper">
-                            <a href="{% url 'escorts:view_escort' escort.phone_number %}">
-                                <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
-                            </a>
-                        </div>
-                        <div class="transparent-details">
-                            <div class="escort-name capitalize">{{ escort.name }}</div>
-                            <div class="escort-location capitalize">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="location-pin">            
-                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 
-                                        192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 
-                                        1 1 0 128 64 64 0 1 1 0-128z"/>
-                                    </svg>
-                                </div>
-                                {{ escort.location }}
-
-                            </div>
-                        </div>
-                        <div class="escort-bio">
-                            {{ escort.bio }}
-                        </div>
-                        <div class="escort-phone">
-                            <span class="phone-icon"></span>
-                            <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
-                        </div> 
-                    </div>
-                    {% endfor %}                  
-                </div>
-            </div>
-            <div class="ads">
-                <h2>GENERAL</h2>
-                <div class="ads-flex"  id="general-ads">
-                    {% for escort in general_escorts %}
-                    <div class="card">
-                        <div class="image-wrapper">
-                            <a href="{% url 'escorts:view_escort' escort.phone_number %}">
-                                <img src="{{ escort.profile_picture }}" alt="Card Image" class="card-image">
-                            </a>
-                        </div>
-                        <div class="transparent-details">
-                            <div class="escort-name capitalize">{{ escort.name }}</div>
-                            <div class="escort-location capitalize">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="location-pin">            
-                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 
-                                        192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 
-                                        1 1 0 128 64 64 0 1 1 0-128z"/>
-                                    </svg>
-                                </div>
-                                {{ escort.location }}
-
-                            </div>
-                        </div>
-                        <div class="escort-bio">
-                            {{ escort.bio }}
-                        </div>
-                        <div class="escort-phone">
-                            <span class="phone-icon"></span>
-                            <a href="tel:{{ escort.phone_number}}" class="escort-phone">{{ escort.phone_number }}</a>
-                        </div> 
-                    </div>
-                    {% endfor %}  
-                </div>
-            </div>
         </div>
         {% endblock %}
         <div id="highlights">
             <div id="highlights-wrapper">
                 <div id="services-highlights">
                     <h1 id="services-title">services:</h1>
-                    <div class="highlights-service">One Night Stand</div>
-                    <div class="highlights-service">Threesome</div>
-                    <div class="highlights-service">Cum on Face</div>
-                    <div class="highlights-service">Sugar Mommy</div>
-                    <div class="highlights-service">BJs</div>
-                    <div class="highlights-service">Extra Ball</div>
-                    <div class="highlights-service">Girlfriend Experience</div>
-                    <div class="highlights-service">Hand Job</div>
-                    <div class="highlights-service">Bolls Massage</div>
+                    {% for service in services %}
+                    <a href="{% url 'escorts:filter_service' service %}"><div class="highlights-service">{{ service }}</div></a>
+                    {% endfor %}
                 </div>
                 <div id="escorts-highlights">
                     

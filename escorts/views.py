@@ -69,6 +69,11 @@ def filter_gender(request):
         context = views_helpers.get_index_context(vips, verified_escorts, general_escorts)
         return render(request, "escorts/index.html", context)
     
+def filter_service(request, service_name):
+    escorts = views_helpers.search_service(service_name)
+    context = views_helpers.get_index_context(escorts)
+    return render(request, "escorts/index.html", context)
+
 
 def view_escort(request, phone_number):
     """
