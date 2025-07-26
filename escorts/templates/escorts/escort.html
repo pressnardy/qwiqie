@@ -51,16 +51,18 @@
     <div class="services">
         <h1>Services</h1>
     </div>
+    {% if services %}
     <div id=services-wrapper>
         <div action="" id="services-form" method="post">
             {% for service in services %}
                 <div class="service-item">
-                    <div class="service">{{ service.service_name }}</div>
-                    <div class="price">{{ service.price}}</div>
+                    <div class="service no-border">{{ service.service_name }}</div>
+                    <!-- <div class="price">{{ service.price}}</div> -->
                 </div>
             {% endfor %}
         </div>
-    </div>    
+    </div>
+    {% endif %}
 </section>
 <br>
 <br>

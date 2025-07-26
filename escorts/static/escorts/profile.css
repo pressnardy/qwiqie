@@ -143,6 +143,7 @@ body {
     box-sizing: border-box;
     gap: 16px;
     width: 100vw;
+    max-width: 600px;
     height: 80%;
     padding: 0 20px;
     /* max-width: 1000px; */
@@ -229,20 +230,26 @@ li {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 80vw;
-    gap: 16px;
-    justify-content: space-between;
+    max-width: 400px;
+    gap: 5px;
+    justify-content: center;
     align-items: center;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     border-radius: 4px;
-    margin: 8px;
+    /* margin: 8px; */
 }
 
 .service {
+    margin-left: 5%;
     width: 60%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid var(--purple-gray);
-    border-radius: 4px;
+    border-bottom: 1px solid var(--purple-gray);
+    /* border-radius: 4px; */
+}
+
+.no-border {
+    padding-left: 0;
 }
 
 .price {

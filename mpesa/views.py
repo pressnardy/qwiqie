@@ -5,8 +5,8 @@ from mpesa import mpesa_api
 import json
 from django.contrib.auth.decorators import login_required
 from .forms import PaymentForm
-from .models import Payment
-from escorts.models import Escort
+from mpesa import views_helpers
+
 
 # @login_required
 def push_stk(request):
@@ -31,26 +31,17 @@ def get_callback(request):
     if request.method == "POST":
         try:
             body = json.loads(request.body.decode("utf-8"))
-            print("Callback Body:", json.dumps(body, indent=4))  # Print the body for debugging
+            print("Callback Body:", json.dumps(body, indent=4)) 
+        except json.JSONDecodeErr:
+            raise json.JSONDecodeError(f'Failed to decode payment callback for {request.user}')
 
-            result_code = body.get("Body", {}).get("stkCallback", {}).get("ResultCode")
-            result_desc = body.get("Body", {}).get("stkCallback", {}).get("ResultDesc")
-            callback_metadata = body.get("Body", {}).get("stkCallback", {}).get("CallbackMetadata", {})
+        result_code = body.get("Body", {}).get("stkCallback", {}).get("ResultCode")
+        result_desc = body.get("Body", {}).get("stkCallback", {}).get("ResultDesc")
+        if callback_metadata := body.get("Body", {}).get("stkCallback", {}).get("CallbackMetadata", {}):
+            item = callback_metadata.get('item', {})
+            views_helpers.save_payment(item)
+            
 
-            # Log or process the extracted data
-            print(f"Result Code: {result_code}")
-            print(f"Result Description: {result_desc}")
-            print(f"Callback Metadata: {callback_metadata}")
-
-            # Respond to M-Pesa with a success message
-            return JsonResponse({"message": "Callback received successfully"})
-        
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON payload"}, status=400)
-        except Exception as e:
-            return JsonResponse({"error": str(e)}, status=500)
-    else:
-        return JsonResponse({"error": "Invalid request method"}, status=405)
 
 def test_post(request):
     if request.method == 'POST':
@@ -58,3 +49,4 @@ def test_post(request):
         print(f"Received amount: {amount}")  # Debugging line to confirm amount is received
         return HttpResponse(f"Amount received: {amount}")
     return render(request, 'mpesa/testpost.html')  # Render the form for testing
+

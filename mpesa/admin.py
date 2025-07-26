@@ -6,8 +6,8 @@ from .models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('payment_id', 'escort_name', 'amount', 'account_reference')
+    list_display = ('payment_id', 'phone_number', 'amount', 'mpesa_receipt_number')
 
-    def escort_name(self, obj):
-        return obj.escort_name()
+    def escort_phone(self, obj):
+        return obj.phone_number
     

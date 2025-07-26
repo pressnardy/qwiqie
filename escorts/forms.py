@@ -50,10 +50,9 @@ class ImageForm(forms.ModelForm):
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
-        fields = ["service_name", "price"]
+        fields = ["service_name"]
         widgets = {
-            "service_name": forms.TextInput(attrs={"class": "service", "placeholder": "Enter Service"}),
-            "price": forms.TextInput(attrs={"class": "price", "placeholder": "Price in KES"})
+            "service_name": forms.TextInput(attrs={"class": "service", "placeholder": "Enter Service"})
         }
 
 
@@ -61,7 +60,7 @@ class EditEscortDetails(forms.ModelForm):
     class Meta:
         model = Escort
         fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
-                   'skin_color', 'body_type', "created_by", 'bio', 'address', 
+                   'skin_color', 'body_type', "created_by", 'bio', 
                      ]
         
 

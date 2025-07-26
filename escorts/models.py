@@ -96,7 +96,7 @@ class Escort(models.Model):
     gender = LowercaseTextField(max_length=20)
     age = models.IntegerField()
     location = LowercaseTextField(max_length=50)
-    address = LowercaseTextField(max_length=100, null=True, default=None, blank=False)
+    address = LowercaseTextField(max_length=100, null=True, default=None, blank=True)
     phone_number = models.CharField(max_length=15, primary_key=True)
     skin_color = LowercaseTextField(max_length=100, null=True, default='chocolate', blank=False)
     body_type = LowercaseTextField(max_length=100, null=True, default='curvy', blank=True)
@@ -109,10 +109,6 @@ class Escort(models.Model):
 
     def save(self, *args, **kwargs):
         self.phone_number = util.clean_phone(self.phone_number)
-        self.address = util.cleaned_address(self.address)
-        address_dict = util.address_to_dict(self.address)
-        self.county = County.get(county_name=address_dict['county'])
-        self.town = Town.get(town_name=address_dict['town'], county_name=self.county.name)
         super().save(*args, **kwargs)
 
     def on_free_trial(self):
@@ -191,7 +187,7 @@ class Image(models.Model):
 class Service(models.Model):
     service_id = models.AutoField(primary_key=True)
     service_name = LowercaseTextField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, default=None, blank=True)
     escort = models.ForeignKey(Escort, on_delete=models.SET_NULL, null=True, related_name='services')
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=None, blank=True)
 
