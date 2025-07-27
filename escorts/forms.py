@@ -64,7 +64,6 @@ class EditEscortDetails(forms.ModelForm):
                      ]
         
 
-
 class EditService(forms.ModelForm):
     class Meta:
         model = Service

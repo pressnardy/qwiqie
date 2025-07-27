@@ -3,7 +3,7 @@ from mpesa.models import Payment
 def save_payment(item):
     payment_details = {}
     for i in item:
-        payment_details[i['name']] = i['value']
+        payment_details[i['Name']] = i['Value']
 
     payment = Payment(
         amount=payment_details['Amount'],
@@ -13,5 +13,6 @@ def save_payment(item):
 
     )
     payment.save()
+    print(payment)
     
     

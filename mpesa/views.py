@@ -38,9 +38,11 @@ def get_callback(request):
         result_code = body.get("Body", {}).get("stkCallback", {}).get("ResultCode")
         result_desc = body.get("Body", {}).get("stkCallback", {}).get("ResultDesc")
         if callback_metadata := body.get("Body", {}).get("stkCallback", {}).get("CallbackMetadata", {}):
-            item = callback_metadata.get('item', {})
+            item = callback_metadata.get('Item', {})
             views_helpers.save_payment(item)
-            
+            return HttpResponse(status=200)
+        return HttpResponse(status=500)
+    return HttpResponse(status=403)
 
 
 def test_post(request):

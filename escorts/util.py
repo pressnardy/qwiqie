@@ -94,9 +94,7 @@ def filter_by_location(escort_model, location):
 
 
 def clean_phone(phone):
-    if " " in phone:
-        phone = phone.split()
-    numbers = [i for i in phone if i.isdigit()]
+    numbers = [i for i in str(phone) if i.isdigit()]
     if len(numbers) < 10:
         raise ValueError(f'phone number must be atleast 10 digits current is {"".join(numbers)} is not')
     digits = ['+254'] + numbers[-9:]

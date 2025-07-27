@@ -1,3 +1,11 @@
+import requests
+import json
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer PJeaGgc14KmClbOf3WeM0ch5vCFy'
+}
+
 body = {    
    "Body": {        
       "stkCallback": {            
@@ -26,3 +34,9 @@ body = {
       }    
    }
 }
+
+body = json.dumps(body)
+response = requests.request(
+    "POST", "https://cosmic-midge-presumably.ngrok-free.app/payments/callback", headers = headers, data=body)
+# print(response.text.encode('utf8'))
+

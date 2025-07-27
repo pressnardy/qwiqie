@@ -12,6 +12,9 @@ class Payment(models.Model):
     phone_number = models.CharField(max_length=12, null=True, blank=False)
     mpesa_receipt_number = models.CharField(max_length=50, null=True, blank=False)
 
+    def escort_phone(self):
+        ...
+
     def __str__(self):
         return f"Payment: (Amount: {self.amount}, escort_id: {self.escort.phone_number}, Date: {self.timestamp})"
 

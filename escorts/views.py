@@ -123,7 +123,7 @@ def edit_escort_details(request, phone_number):
     if request.method == 'POST':
         form = CreateEscortForm(request.POST)
         if form.is_valid():
-            form.instance.created_by = escort.request.user
+            form.instance.created_by = request.user
             form.save()
         return redirect('escorts:profile', phone_number=phone_number)
     else:
