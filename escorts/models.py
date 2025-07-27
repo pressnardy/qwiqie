@@ -104,7 +104,7 @@ class Escort(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='escorts')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     bio = models.TextField(max_length=110, null=True, blank=False, default=None)
-    county = models.ForeignKey(County, on_delete=models.SET_NULL, related_name='escorts', null=True, default=None)
+    county = models.ForeignKey(County, on_delete=models.SET_NULL, related_name='escorts', null=True, default=None, blank=True)
     town = models.ForeignKey(Town, on_delete=models.SET_NULL, related_name='escorts', null=True, default=None)
 
     def save(self, *args, **kwargs):

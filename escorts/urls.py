@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('female/filters', views.female_filters, name='female_filters'),
     path('filters/location/', views.filter_location, name='filter_location'),
+    path('filter_county/<str:county>', views.filter_county, name='filter_county'),
     path('filter_service/<str:service_name>', views.filter_service, name='filter_service'),
     path('gender', views.filter_gender, name='filter_gender'),
     path('females', views.get_females, name='females'),
@@ -20,5 +21,6 @@ urlpatterns = [
     path('<str:phone_number>/<int:service_id>/remove-service/', views.remove_service, name='remove_service'),
     path('<str:phone_number>/add-image/', views.add_image, name='add_image'),
     path('<str:phone_number>/<int:image_id>/remove-image/', views.remove_image, name='remove_image'),
+    
 ]
 

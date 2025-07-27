@@ -6,9 +6,12 @@ from escorts import util
 HOT_SERVICES = [
     'one night stand', 'Threesome', 'cum on face', 'BJ','hand job', 'extraball', 'bolls massage', 'girlfriend esxperience', 'sugar momy'
     ]
-
+HOT_COUNTIES = [
+    'nairobi', 'mombasa', 'kisumu', 'nakuru', 'embu'
+]
 def get_index_context(vips=None, verified_escorts=None, general_escorts=None):
     services = HOT_SERVICES
+    counties = HOT_COUNTIES
     locations = County.get_towns_and_counties()
     escorts = []
     if vips:
@@ -19,6 +22,7 @@ def get_index_context(vips=None, verified_escorts=None, general_escorts=None):
         escorts += verified_escorts
     
     context = {
+        'counties': counties,
         'locations': locations,
         'services': services,
         'filter_form': FilterForm(),

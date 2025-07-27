@@ -17,6 +17,16 @@ def index(request):
     context = views_helpers.get_index_context(vips, verified_escorts, general_escorts)
     return render(request, "escorts/index.html", context)
 
+
+@csrf_exempt
+def filter_county(request, county_name):
+    print('called')
+    county = County.get(county_name.lower())
+    escorts = county.escorts.all().order_by('?')[:20]
+    context = views_helpers.get_index_context(escorts)
+    return render(request, 'escorts/index.html', context)
+    
+
 @csrf_exempt
 def filter_location(request):
     print('called')
@@ -107,9 +117,12 @@ def profile(request, phone_number):
 @login_required
 def create_escort(request):
     if request.method == "POST":
+        county_name = request.POST['county_name']
+        county = County.get(county_name=county_name)
         form = CreateEscortForm(request.POST or None)
         if form.is_valid():
             form.instance.created_by = request.user
+            form.instance.county = county
             escort_phone = form.cleaned_data.get('phone_number')
             form.save()
         return redirect("escorts:profile", phone_number=escort_phone)
@@ -121,11 +134,15 @@ def edit_escort_details(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
     print(escort.created_by)
     if request.method == 'POST':
+        county_name = request.POST['county_name']
+        county = County.get(county_name=county_name)
         form = CreateEscortForm(request.POST, instance=escort)
         if form.is_valid():
+            form.instance.county = county
             form.instance.created_by = request.user
             form.save()
             return redirect('escorts:profile', phone_number=phone_number)
+        return HttpResponse('INVALID FORM')
     else:
         form = CreateEscortForm(instance=escort)
     context = {'form': form, 'escort': escort}

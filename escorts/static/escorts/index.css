@@ -21,10 +21,12 @@
   }
   
   #page-title {
-    font-size: 60px;
+    text-align: center;
+    font-size: 40px;
     font-weight: bold;
     color: var(--light-purple);
     padding: 16px;
+    letter-spacing: 2px;
   }
   
   
@@ -40,21 +42,38 @@
   }
   
   
-  #description {
+#description {
+    display: none;
     padding: 32px 24px 24px 24px;
     font-size: 18px;
     text-align: center;
+    width: 100%;
+    align-self: center;
   }
   
-  
+#tagline {
+    /* display: none; */
+    padding: 5px 40px 10px 20px;
+    word-spacing: 10px;
+    letter-spacing: 4px;
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    color: var(--purple-gray);
+  }
+
+
   #login-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 20px;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    padding-top: 30px;
+    letter-spacing: 2px;
   }
   
 #home {

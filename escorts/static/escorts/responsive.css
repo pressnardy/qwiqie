@@ -61,6 +61,12 @@ button#search-button {
         text-decoration: underline;
         justify-content: center;
     }
+
+    .top-location{
+        text-decoration: none;
+        color: var(--light-purple);
+    }
+
     #description {
         padding-top: 0;
     }
@@ -100,7 +106,8 @@ button#search-button {
     }
 
     #page-title {
-    font-size: 40px;
+    font-size: 28px;
+    
     }
 
     nav {

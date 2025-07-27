@@ -1,5 +1,6 @@
 from django import forms
 from .models import Escort, Image, Service, ProfilePicture
+from escorts.models import util
 
 class CreateEscortForm(forms.ModelForm):
     SKIN_COLORS = [
@@ -15,10 +16,11 @@ class CreateEscortForm(forms.ModelForm):
     skin_color = forms.ChoiceField(choices=SKIN_COLORS, required=False)
     gender = forms.ChoiceField(choices=GENDERS, required=True)
     escort_class = forms.ChoiceField(choices=CLASSES, required=True)
+    county_name = forms.ChoiceField(choices=util.COUNTIES, required=True)
     class Meta:
         model = Escort
         fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
-                   'skin_color', 'body_type', "created_by", 'bio', 'address',
+                   'skin_color', 'body_type', "created_by", 'bio', 'county_name', 
                      ]
 
         widgets = {
@@ -31,7 +33,7 @@ class CreateEscortForm(forms.ModelForm):
             "escort_class":  forms.TextInput(attrs={"class": "form-input", "id": "escort-class"}),
             "skin_color": forms.TextInput(attrs={"class": "form-input", "id": "skin-color"}),
             "body_type": forms.TextInput(attrs={"class": "form-input", "id": "body-type"}),
-            "address": forms.TextInput(attrs={"class": "form-input", "id": "address", 'placeholder': 'Address in format: County,Town,Area'}),
+            "county": forms.TextInput(attrs={"class": "form-input", "id": "county", 'placeholder': 'County'}),
             "bio": forms.Textarea(attrs={
                 "class": "text-area", "id": "bio", 'rows': 3, 'cols': 40,
                 'placeholder': 'Type a short catchy description of yourself'
@@ -60,7 +62,7 @@ class EditEscortDetails(forms.ModelForm):
     class Meta:
         model = Escort
         fields = ['name', 'gender', 'age', 'location', "escort_class", 'phone_number',
-                   'skin_color', 'body_type', "created_by", 'bio', 
+                   'skin_color', 'body_type', "created_by", 'bio', 'county',
                      ]
         
 
