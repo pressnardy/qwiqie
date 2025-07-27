@@ -121,11 +121,11 @@ def edit_escort_details(request, phone_number):
     escort = Escort.objects.filter(phone_number=phone_number, created_by=request.user).first()
     print(escort.created_by)
     if request.method == 'POST':
-        form = CreateEscortForm(request.POST)
+        form = CreateEscortForm(request.POST, instance=escort)
         if form.is_valid():
             form.instance.created_by = request.user
             form.save()
-        return redirect('escorts:profile', phone_number=phone_number)
+            return redirect('escorts:profile', phone_number=phone_number)
     else:
         form = CreateEscortForm(instance=escort)
     context = {'form': form, 'escort': escort}
