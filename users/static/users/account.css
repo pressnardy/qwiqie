@@ -64,6 +64,8 @@ html {
     
 }
 
+
+
 .escort-summary{
     padding: 20px;
     background-color: var(--white);
@@ -268,6 +270,7 @@ nav {
 .description-section {
     width: 100%;
     background: var(--dark-red);
+    box-sizing: border-box;
 }
 
 #description {

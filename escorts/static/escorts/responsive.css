@@ -92,7 +92,9 @@ button#search-button {
     }
 
     #description {
-        padding-top: 0;
+        padding-top: 20px;
+        box-sizing: border-box;
+        font-size: 12px;
     }
     section#escorts-wrapper {
         min-height: fit-content;
@@ -181,8 +183,15 @@ button#search-button {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
+
+    .detail-wrapper-phone {
+        display: flex;
+        justify-content: center;
+    }
+
     #description {
-        display: none;
+        display: block;
+        font-size: 18px;
     }
 
     #filters {

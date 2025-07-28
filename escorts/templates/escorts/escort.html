@@ -6,6 +6,7 @@
 {% endblock %}
 {% block specific_css%}
     <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
 {% endblock %}
 
 {% block sections_wrapper %}
@@ -73,7 +74,7 @@
         <div action="" id="services-form" method="post">
             {% for service in services %}
                 <div class="service-item">
-                    <div class="service no-border">{{ service.service_name }}</div>
+                    <div class="service bordered">{{ service.service_name }}</div>
                     <!-- <div class="price">{{ service.price}}</div> -->
                 </div>
             {% endfor %}

@@ -6,10 +6,12 @@
 {% block specific_css %}
 <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
 <link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'users/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'escorts/responsive.css' %}">
 {% endblock %}
 {% block account_redirect %}
     <div>
-    <a href="{% url 'users:account' %}"><h1 id="home">Account</h1></a>
+    <a href="{% url 'users:account' %}" id="home">Account</a>
     </div>
 {% endblock %}
 {% block sections_wrapper %}
