@@ -10,31 +10,48 @@
 
 {% block sections_wrapper %}
 <section id="escort-profile" class="profile-section">
+    <div class="escort-profile-wrapper">
     <div class="profile-heading">
         <div class="escort-name">
             <h1> {{ escort.name }} </h1>
+            <div class="detail-wrapper-phone">
+                <div class="detail-title-phone">Call</div>
+                <div class="detail-value personal-detail"><span><a href="tel:{{ escort.phone_number }}">{{ escort.phone_number }}</a></span></div>
+            </div>
+        </div>
+        <div class="escort-details">
+            <div class="details-list">
+            <div class="detail-wrapper">
+                <div class="detail-title">Age</div>
+                <div class="detail-value">{{ escort.age }}</div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="detail-title">Sexuality</div>
+                <div class="detail-value">{{ escort.gender }}</div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="detail-title">Location</div>
+                <div class="detail-value">{{ escort.location }}</div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="detail-title">Body Type</div>
+                <div class="detail-value">{{ escort.body_type }}</div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="detail-title">Skin Color</div>
+                <div class="detail-value">{{ escort.skin_color }}</div>
+            </div>
+            </div>
+            <div>
+                <div id="profile-bio-wrapper">
+                    {{ escort.bio }}
+                </div>
+            </div>
         </div>          
     </div>
-    <div id="profile-bio-wrapper">
-        {{ escort.bio }}
+    
     </div>
-</section>
-<section class="profile-section pink-border-bottom">
-    <div id="personal-details">
-        <div id="age" class="personal-detail">Age: <span>{{ escort.age }}</span></div>
-        <br>
-        <div id="gender" class="personal-detail">Sex: <span>{{ escort.gender }}</span></div>
-        <br>
-        <div id="location" class="personal-detail">Location: <span>{{ escort.location }}</span></div>
-        <br>
-        <div id="phone" class="personal-detail">Phone: <span><a href="tel:{{ escort.phone_number }}">{{ escort.phone_number }}</a></span></div>
-        <br>
-        <div id="status" class="personal-detail">Body Type: <span>{{ escort.body_type }}</span></div>
-        <br>
-        <div id="status" class="personal-detail">Skin Color: <span>{{ escort.skin_color }}</span></div>
-        <br>
-        
-    </div>
+    <br>
 </section>
 <section class="profile-section">
     <h3>Images</h3>

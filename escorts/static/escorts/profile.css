@@ -25,28 +25,95 @@ body {
     align-items: center;
     gap: 24px;
     width: 100%;
-    height: 100%;
+    height: fit-content;
     background-color: var(--pink-background);
 }
 
+.escort-profile-wrapper {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+
 .escort-name {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     align-self: flex-start;
     text-transform: capitalize;
+    /* padding-left: 50px; */
 }
 
 #profile-bio-wrapper {
     padding: 20px;
-    margin-bottom: 20px;
     border: 1px solid var(--purple);
     color: var(--purple);
     border-radius: 15px;
-    
+    height: 100%;
+    min-height: 100px;
+    min-width: 300px;
+    align-self: flex-end;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.escort-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    min-width: 300px;
+    /* border: 2px solid var(--white); */
+}
+
+.detail-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+}
+
+.detail-wrapper-phone {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
 }
 
 
+.detail-title {
+    width: 50%;
+    text-align: left;
+}
+
+.detail-value {
+    width: 50%;
+    text-align: left;
+    background: var(--purple);
+    padding: 10px;
+    box-sizing: border-box;
+    width: fit-content;
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.detail-title-phone {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 #personal-details {
     display: flex;
