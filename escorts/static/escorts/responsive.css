@@ -46,6 +46,23 @@ button#search-button {
     display: none;
 }
 
+@media screen and (max-width: 950px) {
+    
+
+    form#female-filters {
+        display: none;
+       
+    }
+}
+
+@media screen and (max-width: 890px) {
+    #page-title {
+        text-align: left;
+    }
+
+    
+}
+
 @media screen and (max-width: 600px) {
     #filters {
         padding-top: 20px;
@@ -107,6 +124,7 @@ button#search-button {
 
     #page-title {
     font-size: 28px;
+    text-align: center;
     
     }
 

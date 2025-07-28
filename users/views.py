@@ -5,6 +5,9 @@ from escorts.models import Escort
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+def in_testnet(request):
+    return render(request, 'users/in_testnet.html')
+
 
 @login_required
 def account(request):

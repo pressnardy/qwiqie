@@ -9,11 +9,13 @@
 <link rel="stylesheet" href="{% static 'users/responsive.css' %}">
 <script defer src="{% static 'users/events.js' %}"></script>
 {% endblock %}
-{% block login %}
-    <div id="login-wrapper">
-        <div id="login"> <a href="{% url 'users:login' %}" style="text-decoration: none;"> Login </a></div>
-    </div>
-{% endblock %}
+
+<div id="login-wrapper">
+    {% block login %}
+    <div id="login"> <a href="{% url 'users:login' %}" style="text-decoration: none;"> Login </a></div>
+    {% endblock %}
+</div>
+
 {% block sections_wrapper %}
     <section id="escort-registration" class="registration-section">
         <div id="escort-title" class="registration-title">

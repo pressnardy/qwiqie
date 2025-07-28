@@ -1,0 +1,26 @@
+{% extends 'escorts/layout.html' %}
+
+{% load static %}
+{% block title %}
+    <title>{{ escort.name }}</title>
+{% endblock %}
+{% block specific_css%}
+    <link rel="stylesheet" href="{% static 'escorts/profile.css' %}">
+{% endblock %}
+
+{% block sections_wrapper %}
+<section id="escort-profile" class="profile-section" style="height: 60vh;">
+    <h1 style="letter-spacing: 4px; word-spacing: 10px;">COMMING SOON</h1>
+    <div id="tagline" style="letter-spacing: 4px; word-spacing: 10px;">Qwiqee.com is currently under construction.</div>
+    <a href="{% url 'escorts:index' %}">
+        <div id="tagline" class="testnet-redirect" 
+        style="text-decoration: underline; cursor: pointer; letter-spacing: 4px; word-spacing: 5px; 
+        text-decoration-color: rgb(226, 43, 217); text-underline-offset: 4px;">
+            view in testnet
+        </div>
+    </a>
+</section>
+{% endblock %}
+{% block footer %}{% endblock %}
+
+
