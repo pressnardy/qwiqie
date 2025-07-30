@@ -37,7 +37,8 @@ def get_access_token():
         response = requests.get(url=MPESA_CREDENTIALS_URL, headers=headers).json()
         return str(response["access_token"])
     except Exception as e:
-        raise Exception("Failed to get access token: " + str(e)) 
+        # raise Exception("Failed to get access token: " + str(e)) 
+        return ''
 
 
 HEADERS = {
