@@ -22,10 +22,9 @@ from users.views import in_testnet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', in_testnet, name='in_testnet'),
-    path('testnet/', include('escorts.urls')),
-    path('testnet/users/', include('users.urls')),
-    path('testnet/payments/', include('mpesa.urls'))
+    path('', include('escorts.urls')),
+    path('users/', include('users.urls')),
+    path('payments/', include('mpesa.urls'))
 
 ]
 
