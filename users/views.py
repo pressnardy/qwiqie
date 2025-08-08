@@ -15,6 +15,9 @@ def in_testnet(request):
 @login_required
 def account(request):
     user = request.user
+    username = user.username
+    if util.is_254_phone(username):
+        user.username = f"0{username[-9:]}"
     escorts = Escort.objects.filter(created_by=request.user)
     context = {"user": user, "escorts": escorts}
     return render(request, 'users/account.html', context)
