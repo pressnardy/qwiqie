@@ -3,7 +3,7 @@ from django.core.exceptions import FieldError
 import re
 
 def is_254_phone(number):
-    pattern = r'^\+254\d{9}$'
+    pattern = r'^(?:\+254|0)\d{9}$'
     return bool(re.match(pattern, number))
       
 

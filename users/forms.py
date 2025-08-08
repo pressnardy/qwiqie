@@ -42,5 +42,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     
     def clean_username(self):
         username = self.cleaned_data.get('username')
+        if util.is_254_phone(username):
+            username = util.clean_phone(username)
         return username.lower() if username else username
 

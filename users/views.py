@@ -26,6 +26,9 @@ def account(request):
 @login_required
 def first_login(request, message):
     user = request.user
+    username = user.username
+    if util.is_254_phone(username):
+        user.username = f"0{username[-9:]}"
     message = message.replace(",", " ")
     escorts = Escort.objects.filter(created_by=request.user)
     context = {"user": user, "escorts": escorts, 'message':message}
