@@ -254,3 +254,9 @@ svg#eye-closed, svg#eye-open {
 .registration-title > h2 {
     color: var(--dark-red);
 }
+
+.errorlist {
+    color: #d6030e;
+    padding-bottom: 10px;
+    /* font-size: 12px; */
+}

@@ -26,12 +26,16 @@
                 <div id="escort-title" class="registration-title">
                     <h2>Login</h2> 
                 </div>
+                {% if form.errors %}
+                <div class="errorlist">Invalid credentials</div>
+                <br>
+                {% endif %}
             </div>
         </div>
         <div class="form-wrapper">
             <form action="#" method="post" class="registration-form">
                 {% csrf_token %}
-                <label for="email">Username<span id="asterix" style="color: red;">*</span>
+                <label for="email">Username/Phone Number<span id="asterix" style="color: red;">*</span>
                     <div id="signup-group">
                         <input type="text" name="username" id="username" class="form-input" required>
                     </div>

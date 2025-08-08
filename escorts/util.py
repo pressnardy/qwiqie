@@ -1,4 +1,17 @@
 import random
+from django.core.exceptions import FieldError
+
+def is_existing(obj, **kwargs):
+    errors = []
+    for k, v in kwargs.items():
+        try:
+            if obj.objects.filter(**{k: v}).exists():
+                error = f"User with this {k} already exists"
+                return True
+        except FieldError:
+            continue
+    return errors if errors else False
+
 
 def get_cards(escorts):
     cards = []
