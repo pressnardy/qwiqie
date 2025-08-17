@@ -24,9 +24,9 @@
             <a href="{% url 'escorts:index' %}">
             <div id="page-title">Nairobi Escorts @Qwiqee.com</div>
             </a>
-            <div id="description">
-                <p>Find your perfect match for exotic quality services</p>
-            </div>
+            <!-- <div id="description">
+                <p>Find your perfect match for exotic escort services</p>
+            </div> -->
         </div>
         <div id="login-wrapper">
             <a href="{% url 'escorts:index' %}"><div id="login">Home</div></a>
@@ -40,9 +40,9 @@
         {% if counties %}
         <div id="top-towns">
             {% for county in counties %}
-            <a href="{% url 'escorts:filter_county' county %}"><div class="top-location">{{ county.capitalize }}</div></a>
+            <a href="{% url 'escorts:filter_county' county %}"><div class="top-location">{{ county.capitalize }} Escorts</div></a>
             {% endfor %}
-            <div class="top-location town">Thika</div>
+            <div class="top-location town">Thika Escorts</div>
         </div>
         {% endif %}
         <form action="{% url 'escorts:filter_gender' %}" id="gender-filter" class="filter-form" method="post">
@@ -129,7 +129,7 @@
         <div id="escorts-ads">
             <div class="ads">
                 <div id="tagline">
-                    <p>Find your perfect match for exotic quality services</p>
+                    <p>Find your perfect match for exotic escort services</p>
                 </div>
                 <div class="ads-flex" id="vip-ads">
                     {% for escort in escorts %}
