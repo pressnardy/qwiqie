@@ -22,7 +22,8 @@ from users.views import in_testnet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('escorts.urls')),
+    # path('', include('escorts.urls')),
+    path('', in_testnet),
     path('users/', include('users.urls')),
     path('payments/', include('mpesa.urls')),
     path('testnet/', include('escorts.urls')),

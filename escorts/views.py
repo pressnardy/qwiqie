@@ -7,6 +7,7 @@ from .models import Escort, Image, Service, County, Town
 from . import util, views_helpers
 from .util import get_cards, filter_escorts
 from django.views.decorators.csrf import csrf_exempt
+from users.views import in_testnet
 
 
 @csrf_exempt
